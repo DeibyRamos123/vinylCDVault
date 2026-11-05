@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +19,12 @@ class LoginActivity : AppCompatActivity() {
         // Temporal: luego aquí irá la navegación por rol
         findViewById<View>(R.id.btnLogin).setOnClickListener {
             // Toast: mensaje de aviso tipo alert en web
-            startActivity(Intent(this, BuyerActivity::class.java))
+            val email = findViewById<TextInputEditText>(R.id.etEmail).text.toString().lowercase()
+            val destination = when {
+                email.contains("vendedor") -> SellerActivity::class.java
+                else -> BuyerActivity::class.java
+            }
+            startActivity(Intent(this, destination))
         }
 
         // FindViewById Como un document.getElementById() de javascript y el setOnClickListener como el .addEventListener()

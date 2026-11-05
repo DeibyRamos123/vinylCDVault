@@ -16,4 +16,5 @@
     <color name="chip_bg">#DCEBF3</color>
     <color name="surface_muted">#E3ECF1</color>
     <color name="divider">#D5DEE5</color>
+    <color name="success">#2A9D8F</color>
 </resources>

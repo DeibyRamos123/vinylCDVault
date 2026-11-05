@@ -18,4 +18,5 @@
     <dimen name="cover_detail_height">240dp</dimen>
     <dimen name="icon_button">48dp</dimen>
     <dimen name="avatar_size">88dp</dimen>
+    <dimen name="photo_box_height">180dp</dimen>
 </resources>

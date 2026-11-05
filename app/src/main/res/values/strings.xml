@@ -88,4 +88,65 @@
     <string name="profile_favorites">❤️  Favoritos</string>
     <string name="profile_withdrawal">↩️  Retracto / cancelar compra</string>
     <string name="profile_logout">Cerrar sesión</string>
+
+
+    <string name="seller_nav_products">Productos</string>
+    <string name="seller_nav_orders">Pedidos</string>
+    <string name="seller_nav_profile">Perfil</string>
+
+    <string name="seller_products_title">Mis discos</string>
+    <string name="seller_products_subtitle">Publica y administra tu inventario</string>
+    <string name="seller_add">Agregar disco</string>
+    <string name="seller_edit">Editar</string>
+    <string name="seller_delete">Eliminar</string>
+    <string name="seller_delete_title">Eliminar disco</string>
+    <string name="seller_delete_message">¿Seguro que quieres eliminar este disco de tu inventario?</string>
+    <string name="seller_delete_confirm">Eliminar</string>
+    <string name="seller_delete_cancel">Cancelar</string>
+    <string name="seller_deleted">Disco eliminado</string>
+
+    <string name="form_new_title">Subir disco</string>
+    <string name="form_edit_title">Editar disco</string>
+    <string name="form_details">Detalles del álbum</string>
+    <string name="form_required">Los campos con * son obligatorios</string>
+    <string name="form_title_hint">Título *</string>
+    <string name="form_artist_hint">Artista *</string>
+    <string name="form_price_hint">Precio (COP) *</string>
+    <string name="form_description_hint">Descripción</string>
+    <string name="form_format_label">Formato *</string>
+    <string name="form_condition_label">Estado del disco *</string>
+    <string name="format_vinyl">Vinilo</string>
+    <string name="format_cd">CD</string>
+    <string name="format_cassette">Cassette</string>
+    <string name="condition_sealed">Nuevo (sellado)</string>
+    <string name="condition_nm">Near Mint (NM)</string>
+    <string name="condition_vgplus">Very Good Plus (VG+)</string>
+    <string name="condition_vg">Very Good (VG)</string>
+    <string name="form_photos_label">Fotos del disco</string>
+    <string name="form_gallery">Subir desde galería</string>
+    <string name="form_camera">Tomar foto</string>
+    <string name="form_photo_hint">Agrega una foto clara de la portada, con buena luz y sin reflejos. Puedes tomar varios ángulos.</string>
+    <string name="form_save">Guardar disco</string>
+    <string name="form_saved">Disco guardado (simulado)</string>
+    <string name="form_pending">Pendiente de implementar</string>
+
+    <string name="orders_title">Pedidos recibidos</string>
+    <string name="orders_subtitle">Historial de ventas de tu tienda</string>
+    <string name="status_pending">Pendiente</string>
+    <string name="status_shipped">Enviado</string>
+    <string name="status_delivered">Entregado</string>
+
+    <string name="seller_profile_title">Perfil del vendedor</string>
+    <string name="seller_store_name">VinylWorks Store</string>
+    <string name="seller_store_email">ventas@vinylworks.co</string>
+    <string name="seller_stat_listings">Discos</string>
+    <string name="seller_stat_sales">Ventas</string>
+    <string name="seller_stat_rating">Calificación</string>
+    <string name="seller_stat_listings_value">24</string>
+    <string name="seller_stat_sales_value">138</string>
+    <string name="seller_stat_rating_value">4.8 ★</string>
+    <string name="seller_row_store">🏪  Datos de la tienda</string>
+    <string name="seller_row_shipping">🚚  Opciones de envío</string>
+    <string name="seller_row_payments">💳  Cuenta de pagos</string>
+    <string name="seller_row_help">❓  Ayuda para vendedores</string>
 </resources>
