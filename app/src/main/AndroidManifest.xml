@@ -38,11 +38,9 @@
             android:name=".ProductDetailActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".BuyerActivity"
+        <activity android:name=".CheckoutActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
     </application>
 
 </manifest>

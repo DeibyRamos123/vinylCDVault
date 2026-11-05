@@ -22,15 +22,21 @@
             android:layout_height="wrap_content"
             android:text="@string/home_subtitle" />
 
-        <TextView
-            style="@style/App.Text.Body"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/App.Input"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:background="@drawable/bg_card"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/spacing_medium"
-            android:text="@string/home_search_placeholder" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:hint="@string/home_search_placeholder"
+                android:inputType="text"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
