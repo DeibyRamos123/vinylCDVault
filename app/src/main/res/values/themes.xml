@@ -4,6 +4,9 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryContainer">@color/chip_bg</item>
+        <item name="colorOnSecondaryContainer">@color/primary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
         <item name="android:windowBackground">@color/background_light</item>
         <item name="android:statusBarColor">@color/primary_dark</item>
     </style>

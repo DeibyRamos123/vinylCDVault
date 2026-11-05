@@ -12,4 +12,8 @@
     <color name="accent">#E63946</color>
     <color name="accent_dark">#C1121F</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="chip_bg">#DCEBF3</color>
+    <color name="surface_muted">#E3ECF1</color>
+    <color name="divider">#D5DEE5</color>
 </resources>

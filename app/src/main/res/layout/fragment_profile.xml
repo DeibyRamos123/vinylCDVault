@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/screen_padding">
+
+        <TextView
+            style="@style/App.Text.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_title" />
+
+        <TextView
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@drawable/bg_logo_circle"
+            android:gravity="center"
+            android:text="👤"
+            android:textSize="40sp" />
+
+        <TextView
+            style="@style/App.Text.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/sample_name" />
+
+        <TextView
+            style="@style/App.Text.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_email" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Material3.CardView.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/input_stroke">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_orders" />
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
+                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_addresses" />
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
+                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_favorites" />
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
+                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_withdrawal" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            style="@style/App.ButtonOutlined"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:text="@string/profile_logout" />
+    </LinearLayout>
+</ScrollView>
