@@ -9,4 +9,13 @@
     <string name="login_or">o</string>
     <string name="login_biometric">Ingresar con huella</string>
     <string name="login_register">¿No tienes cuenta? Regístrate</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="splash_tagline">Tu tienda de vinilos y CDs</string>
+    <string name="recover_title">Recuperar contraseña</string>
+    <string name="recover_subtitle">Te enviaremos un enlace a tu correo para crear una nueva contraseña</string>
+    <string name="recover_button">Enviar enlace</string>
+    <string name="recover_back">Volver al inicio de sesión</string>
+    <string name="recover_sent">Si el correo existe, recibirás un enlace</string>
+    <string name="error_email_invalid">Ingresa un correo válido</string>
 </resources>

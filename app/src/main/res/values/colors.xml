@@ -9,5 +9,7 @@
     <color name="card_bg" type="color">#FFFFFF</color>
     <color name="text_secondary">#6B6785</color>
     <color name="primary">#5B3FD1</color>
-    <color name="accent">#FF8A3D</color>
+    <color name="accent">#E63946</color>
+    <color name="accent_dark">#C1121F</color>
+    <color name="white">#FFFFFF</color>
 </resources>
