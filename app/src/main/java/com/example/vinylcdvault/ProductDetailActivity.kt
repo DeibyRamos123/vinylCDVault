@@ -2,6 +2,7 @@ package com.example.vinylcdvault
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ class ProductDetailActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvDetailPrice).text = p.price
         findViewById<TextView>(R.id.tvDetailCondition).text = p.condition
         findViewById<TextView>(R.id.tvDetailDescription).text = p.description
+        findViewById<ImageView>(R.id.ivCover).setImageResource(p.imageRes)
 
         findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
         findViewById<View>(R.id.btnAddToCart).setOnClickListener {

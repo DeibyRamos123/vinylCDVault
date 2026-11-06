@@ -3,6 +3,7 @@ package com.example.vinylcdvault
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -13,6 +14,7 @@ class ProductAdapter(
 ) : RecyclerView.Adapter<ProductAdapter.VH>() {
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
+        val cover: ImageView = view.findViewById(R.id.ivCover)
         val title: TextView = view.findViewById(R.id.tvTitle)
         val artist: TextView = view.findViewById(R.id.tvArtist)
         val format: TextView = view.findViewById(R.id.tvFormat)
@@ -24,6 +26,7 @@ class ProductAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val p = items[position]
+        holder.cover.setImageResource(p.imageRes)
         holder.title.text = p.title
         holder.artist.text = p.artist
         holder.format.text = p.format

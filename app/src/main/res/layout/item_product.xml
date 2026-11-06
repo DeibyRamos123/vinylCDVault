@@ -20,12 +20,12 @@
             android:layout_height="@dimen/cover_height"
             android:background="@drawable/bg_cover">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="💿"
-                android:textSize="48sp" />
+            <ImageView
+                android:id="@+id/ivCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/app_name" />
 
             <TextView
                 android:id="@+id/tvFormat"

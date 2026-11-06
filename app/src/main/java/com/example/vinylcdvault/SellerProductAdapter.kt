@@ -3,6 +3,7 @@ package com.example.vinylcdvault
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -17,6 +18,7 @@ class SellerProductAdapter(
         val artist: TextView = view.findViewById(R.id.tvArtist)
         val format: TextView = view.findViewById(R.id.tvFormat)
         val price: TextView = view.findViewById(R.id.tvPrice)
+        val cover: ImageView = view.findViewById(R.id.ivCover)
         val edit: View = view.findViewById(R.id.btnEdit)
         val delete: View = view.findViewById(R.id.btnDelete)
     }
@@ -30,6 +32,7 @@ class SellerProductAdapter(
         holder.artist.text = p.artist
         holder.format.text = p.format
         holder.price.text = p.price
+        holder.cover.setImageResource(p.imageRes)
         holder.edit.setOnClickListener { onEdit(p) }
         holder.delete.setOnClickListener { onDelete(p, holder.bindingAdapterPosition) }
     }
