@@ -36,6 +36,16 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:padding="@dimen/spacing_small"
+            android:text="@string/login_register"
+            android:textColor="@color/primary"
+            android:textStyle="bold" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
@@ -137,17 +147,9 @@
                 app:cornerRadius="@dimen/corner_radius"
                 app:iconTint="@color/primary"
                 app:strokeColor="@color/primary" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:padding="@dimen/spacing_small"
-            android:text="@string/login_register"
-            android:textColor="@color/primary"
-            android:textStyle="bold" />
     </LinearLayout>
 
 
