@@ -251,4 +251,23 @@
     <string name="biometric_failed">No se pudo verificar la huella</string>
     <string name="biometric_verified">Huella verificada ✔</string>
     <string name="biometric_required">Verifica tu huella para confirmar el pago</string>
+
+
+    <string name="profile_orders_title">Mis pedidos</string>
+    <string name="profile_favorites_title">Favoritos</string>
+    <string name="dialog_close">Cerrar</string>
+    <string name="info_addresses_title">Mis direcciones</string>
+    <string name="info_addresses_msg">Dirección principal: Calle 45 # 12-34, Bogotá.\n\nPuedes cambiarla al momento de pagar.</string>
+    <string name="withdrawal_title">Retracto de compra</string>
+    <string name="withdrawal_msg">Según la Ley 1480 de 2011 puedes retractarte de tu compra dentro de los 5 días hábiles siguientes a la entrega. ¿Deseas solicitar el retracto de tu último pedido?</string>
+    <string name="withdrawal_confirm">Solicitar retracto</string>
+    <string name="withdrawal_sent">Solicitud de retracto enviada (simulado)</string>
+    <string name="info_store_title">Datos de la tienda</string>
+    <string name="info_store_msg">VinylWorks Store\nventas@vinylworks.co\nBogotá, Colombia</string>
+    <string name="info_shipping_title">Opciones de envío</string>
+    <string name="info_shipping_msg">Envío estándar (3 a 5 días) y express (1 a 2 días) a todo el país.</string>
+    <string name="info_payments_title">Cuenta de pagos</string>
+    <string name="info_payments_msg">Los pagos de tus ventas se depositan cada semana en tu cuenta registrada.</string>
+    <string name="info_help_title">Ayuda para vendedores</string>
+    <string name="info_help_msg">Toma fotos con buena luz, describe el estado real del disco y responde rápido a tus compradores.</string>
 </resources>

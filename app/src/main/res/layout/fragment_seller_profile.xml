@@ -102,13 +102,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_store" />
+                <TextView android:id="@+id/rowStore" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_store" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_shipping" />
+                <TextView android:id="@+id/rowShipping" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_shipping" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_payments" />
+                <TextView android:id="@+id/rowPayments" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_payments" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_help" />
+                <TextView android:id="@+id/rowHelp" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_help" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
