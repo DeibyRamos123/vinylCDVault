@@ -149,4 +149,81 @@
     <string name="seller_row_shipping">🚚  Opciones de envío</string>
     <string name="seller_row_payments">💳  Cuenta de pagos</string>
     <string name="seller_row_help">❓  Ayuda para vendedores</string>
+
+
+    <string name="admin_nav_dashboard">Panel</string>
+    <string name="admin_nav_users">Usuarios</string>
+    <string name="admin_nav_products">Productos</string>
+    <string name="admin_nav_reports">Reportes</string>
+
+    <string name="admin_dashboard_title">Panel de administración</string>
+    <string name="admin_dashboard_subtitle">Resumen general de la tienda</string>
+    <string name="admin_stat_users">Usuarios</string>
+    <string name="admin_stat_products">Discos publicados</string>
+    <string name="admin_stat_orders">Pedidos del mes</string>
+    <string name="admin_stat_sales">Ventas del mes</string>
+    <string name="admin_stat_users_value">128</string>
+    <string name="admin_stat_products_value">342</string>
+    <string name="admin_stat_orders_value">57</string>
+    <string name="admin_stat_sales_value">$12,4 M</string>
+    <string name="admin_moderation_title">Moderación (últimas 24 h)</string>
+    <string name="admin_pending_listings">Publicaciones pendientes</string>
+    <string name="admin_flagged_reviews">Reseñas reportadas</string>
+    <string name="admin_banned_users">Usuarios bloqueados</string>
+    <string name="admin_pending_listings_value">32</string>
+    <string name="admin_flagged_reviews_value">14</string>
+    <string name="admin_banned_users_value">3</string>
+    <string name="admin_recent_title">Actividad reciente</string>
+    <string name="admin_recent_1">✅  Aprobado: Neon Dreams (Remasterizado) · hace 2 h</string>
+    <string name="admin_recent_2">✏️  Cambios solicitados: City Lights · hace 5 h</string>
+    <string name="admin_recent_3">🚫  Rechazado: Midnight Groove · ayer</string>
+
+    <string name="admin_users_title">Gestión de usuarios</string>
+    <string name="admin_users_subtitle">Administra cuentas, roles y permisos</string>
+    <string name="admin_users_search_hint">Buscar por nombre, correo o rol</string>
+    <string name="admin_add_user">Crear usuario</string>
+    <string name="admin_edit_user">Editar usuario</string>
+    <string name="admin_delete_user">Eliminar usuario</string>
+    <string name="admin_delete_user_message">¿Seguro que quieres eliminar este usuario? Esta acción no se puede deshacer.</string>
+    <string name="admin_user_deleted">Usuario eliminado</string>
+    <string name="role_buyer">Comprador</string>
+    <string name="role_seller">Vendedor</string>
+    <string name="role_admin">Administrador</string>
+    <string name="user_status_active">Activo</string>
+    <string name="user_status_suspended">Suspendido</string>
+
+    <string name="admin_products_title">Gestión de productos</string>
+    <string name="admin_products_subtitle">Revisa y modera el catálogo completo</string>
+
+    <string name="user_form_new">Crear usuario</string>
+    <string name="user_form_edit">Editar usuario</string>
+    <string name="user_form_data">Datos del usuario</string>
+    <string name="user_name_hint">Nombre completo *</string>
+    <string name="user_email_hint">Correo electrónico *</string>
+    <string name="user_password_hint">Contraseña temporal</string>
+    <string name="user_role_label">Rol *</string>
+    <string name="user_active_label">Cuenta activa</string>
+    <string name="user_save">Guardar usuario</string>
+    <string name="user_saved">Usuario guardado (simulado)</string>
+    <string name="field_required">Campo obligatorio</string>
+
+    <string name="reports_title">Reporte de ventas</string>
+    <string name="reports_subtitle">Resumen de los últimos 6 meses</string>
+    <string name="reports_total_label">Ventas totales</string>
+    <string name="reports_total_value">$68.450.000</string>
+    <string name="reports_chart_title">Ventas por mes</string>
+    <string name="month_may">May</string>
+    <string name="month_jun">Jun</string>
+    <string name="month_jul">Jul</string>
+    <string name="month_aug">Ago</string>
+    <string name="month_sep">Sep</string>
+    <string name="month_oct">Oct</string>
+    <string name="reports_top_title">Discos más vendidos</string>
+    <string name="reports_top_1">1. Random Access Memories · 42 ventas</string>
+    <string name="reports_top_2">2. Kind of Blue · 35 ventas</string>
+    <string name="reports_top_3">3. Nevermind · 29 ventas</string>
+    <string name="reports_export">Exportar reporte</string>
+    <string name="reports_export_toast">Exportación pendiente de implementar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -19,4 +19,6 @@
     <dimen name="icon_button">48dp</dimen>
     <dimen name="avatar_size">88dp</dimen>
     <dimen name="photo_box_height">180dp</dimen>
+    <dimen name="chart_height">160dp</dimen>
+    <dimen name="avatar_small">48dp</dimen>
 </resources>

@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
             val email = findViewById<TextInputEditText>(R.id.etEmail).text.toString().lowercase()
             val destination = when {
                 email.contains("vendedor") -> SellerActivity::class.java
+                email.contains("admin") -> AdminActivity::class.java
                 else -> BuyerActivity::class.java
             }
             startActivity(Intent(this, destination))
