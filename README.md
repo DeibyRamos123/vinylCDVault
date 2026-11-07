@@ -28,7 +28,7 @@ Este repositorio corresponde al **desarrollo del frontend** (interfaces gráfica
 
 1. Clona el repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone <https://github.com/DeibyRamos123/vinylCDVault.git>
    ```
 2. Ábrelo con **Android Studio** (File → Open) y espera a que termine el *Gradle Sync*.
 3. Crea o selecciona un emulador (por ejemplo, un Pixel con imagen **Google APIs**) o conecta un celular.
