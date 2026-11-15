@@ -10,7 +10,7 @@
     <!--Los fragments son como los componentes en ract-->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
-        android:name="com.example.vinylcdvault.HomeFragment"
+        android:name="com.example.vinylcdvault.ui.buyer.HomeFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

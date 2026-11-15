@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/adminContainer"
-        android:name="com.example.vinylcdvault.AdminDashboardFragment"
+        android:name="com.example.vinylcdvault.ui.admin.AdminDashboardFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

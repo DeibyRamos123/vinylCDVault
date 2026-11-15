@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "913266437965",
+    "project_id": "vinylcdvault",
+    "storage_bucket": "vinylcdvault.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913266437965:android:fb0786c8a77e0601ccd104",
+        "android_client_info": {
+          "package_name": "com.example.vinylcdvault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-Iz0PVKMd_xEtWIyWAMjqssGcjvqDij0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
