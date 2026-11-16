@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.ui.common.showInfo
 import com.example.vinylcdvault.ui.auth.LoginActivity
+import com.example.vinylcdvault.ui.common.logoutToLogin
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -32,11 +33,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 .show()
         }
 
-        view.findViewById<View>(R.id.btnLogout).setOnClickListener {
-            startActivity(
-                Intent(requireContext(), LoginActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            )
-        }
+        view.findViewById<View>(R.id.btnLogout).setOnClickListener { logoutToLogin() }
     }
 }
