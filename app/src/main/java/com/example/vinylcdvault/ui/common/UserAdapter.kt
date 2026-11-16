@@ -5,15 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.User
 
+/**
+ * Muestra la lista de usuarios. Usa DiffUtil para animar solo lo que cambió
+ * cuando llega una lista nueva desde Firestore.
+ */
 class UserAdapter(
-    private val items: MutableList<User>,
     private val onEdit: (User) -> Unit,
-    private val onDelete: (User, Int) -> Unit
-) : RecyclerView.Adapter<UserAdapter.VH>() {
+    private val onDelete: (User) -> Unit
+) : ListAdapter<User, UserAdapter.VH>(UserDiff) {
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.tvUserName)
@@ -28,18 +33,22 @@ class UserAdapter(
         VH(LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val u = items[position]
+        val u = getItem(position)
         val context = holder.itemView.context
         holder.name.text = u.name
         holder.email.text = u.email
-        holder.role.text = u.role
+        holder.role.setText(roleLabelRes(u.role))
         holder.status.setText(if (u.active) R.string.user_status_active else R.string.user_status_suspended)
         holder.status.setTextColor(
             ContextCompat.getColor(context, if (u.active) R.color.success else R.color.accent)
         )
         holder.edit.setOnClickListener { onEdit(u) }
-        holder.delete.setOnClickListener { onDelete(u, holder.bindingAdapterPosition) }
+        holder.delete.setOnClickListener { onDelete(u) }
     }
+}
 
-    override fun getItemCount() = items.size
+// Compara usuarios por uid para saber si es el mismo elemento, y por contenido para saber si cambió
+private object UserDiff : DiffUtil.ItemCallback<User>() {
+    override fun areItemsTheSame(a: User, b: User) = a.uid == b.uid
+    override fun areContentsTheSame(a: User, b: User) = a == b
 }

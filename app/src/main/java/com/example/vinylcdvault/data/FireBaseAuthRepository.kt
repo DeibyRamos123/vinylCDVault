@@ -44,7 +44,7 @@ class FirebaseAuthRepository(
             auth.signOut()
             throw IllegalStateException("Tu perfil no existe. Contacta al administrador")
         }
-        if (!profile.active) {
+        if (!profile.active || profile.deleted) {
             auth.signOut()
             throw IllegalStateException("Tu cuenta está suspendida")
         }
@@ -58,7 +58,7 @@ class FirebaseAuthRepository(
     override suspend fun currentProfile(): User? {
         val uid = auth.currentUser?.uid ?: return null
         val profile = users.document(uid).get().await().toObject(User::class.java)
-        if (profile == null || !profile.active) {
+        if (profile == null || !profile.active || profile.deleted) {
             auth.signOut()
             return null
         }

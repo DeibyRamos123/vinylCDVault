@@ -20,7 +20,8 @@ data class User(
     val role: String = Roles.BUYER,
     val active: Boolean = true,
     val uid: String = "",
-    val phone: String = ""
+    val phone: String = "",
+    val deleted: Boolean = false
 ) : Serializable
 
 

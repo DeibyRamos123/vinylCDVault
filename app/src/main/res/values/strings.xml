@@ -184,7 +184,7 @@
     <string name="admin_add_user">Crear usuario</string>
     <string name="admin_edit_user">Editar usuario</string>
     <string name="admin_delete_user">Eliminar usuario</string>
-    <string name="admin_delete_user_message">¿Seguro que quieres eliminar este usuario? Esta acción no se puede deshacer.</string>
+    <string name="admin_delete_user_message">¿Seguro que quieres eliminar este usuario? Perderá el acceso a la app.</string>
     <string name="admin_user_deleted">Usuario eliminado</string>
     <string name="role_buyer">Comprador</string>
     <string name="role_seller">Vendedor</string>
@@ -272,4 +272,8 @@
     <string name="info_help_msg">Toma fotos con buena luz, describe el estado real del disco y responde rápido a tus compradores.</string>
 
     <string name="login_need_session">Primero inicia sesión con tu correo y contraseña. Mientras no cierres sesión, podrás entrar con tu huella</string>
+    <string name="user_created">Usuario creado</string>
+    <string name="user_updated">Usuario actualizado</string>
+    <string name="error_own_account">No puedes eliminar tu propia cuenta</string>
+    <string name="error_own_role">No puedes quitarte el rol de administrador ni suspender tu propia cuenta</string>
 </resources>
