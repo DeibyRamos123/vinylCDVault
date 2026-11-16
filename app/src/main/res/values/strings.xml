@@ -238,7 +238,7 @@
     <string name="register_privacy">Acepto la política de privacidad y el tratamiento de mis datos personales (Ley 1581 de 2012)</string>
     <string name="register_button">Crear cuenta</string>
     <string name="register_have_account">¿Ya tienes cuenta? Inicia sesión</string>
-    <string name="register_success">Cuenta creada (simulado). Ahora inicia sesión</string>
+    <string name="register_success">Cuenta creada. Ahora inicia sesión</string>
     <string name="error_password_short">Mínimo 6 caracteres</string>
     <string name="error_password_mismatch">Las contraseñas no coinciden</string>
     <string name="error_privacy">Debes aceptar la política de privacidad</string>
@@ -271,6 +271,5 @@
     <string name="info_help_title">Ayuda para vendedores</string>
     <string name="info_help_msg">Toma fotos con buena luz, describe el estado real del disco y responde rápido a tus compradores.</string>
 
-    <string name="register_success">Cuenta creada. Ahora inicia sesión</string>
     <string name="login_need_session">Primero inicia sesión con tu correo y contraseña. Mientras no cierres sesión, podrás entrar con tu huella</string>
 </resources>
