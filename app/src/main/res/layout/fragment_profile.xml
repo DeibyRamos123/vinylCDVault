@@ -29,6 +29,7 @@
 
         <TextView
             style="@style/App.Text.Subtitle"
+            android:id="@+id/tvProfileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
@@ -36,6 +37,7 @@
 
         <TextView
             style="@style/App.Text.Body"
+            android:id="@+id/tvProfileEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sample_email" />

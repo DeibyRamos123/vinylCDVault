@@ -5,22 +5,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.Product
+import com.example.vinylcdvault.util.toCop
 
+/** Lista de discos con portada y botones de editar y eliminar (vendedor y administrador). */
 class SellerProductAdapter(
-    private val items: MutableList<Product>,
     private val onEdit: (Product) -> Unit,
-    private val onDelete: (Product, Int) -> Unit
-) : RecyclerView.Adapter<SellerProductAdapter.VH>() {
+    private val onDelete: (Product) -> Unit
+) : ListAdapter<Product, SellerProductAdapter.VH>(ProductDiff) {
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
+        val cover: ImageView = view.findViewById(R.id.ivCover)
         val title: TextView = view.findViewById(R.id.tvTitle)
         val artist: TextView = view.findViewById(R.id.tvArtist)
         val format: TextView = view.findViewById(R.id.tvFormat)
         val price: TextView = view.findViewById(R.id.tvPrice)
-        val cover: ImageView = view.findViewById(R.id.ivCover)
         val edit: View = view.findViewById(R.id.btnEdit)
         val delete: View = view.findViewById(R.id.btnDelete)
     }
@@ -29,15 +33,30 @@ class SellerProductAdapter(
         VH(LayoutInflater.from(parent.context).inflate(R.layout.item_seller_product, parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val p = items[position]
+        val p = getItem(position)
         holder.title.text = p.title
         holder.artist.text = p.artist
         holder.format.text = p.format
-        holder.price.text = p.price
-        holder.cover.setImageResource(p.imageRes)
-        holder.edit.setOnClickListener { onEdit(p) }
-        holder.delete.setOnClickListener { onDelete(p, holder.bindingAdapterPosition) }
-    }
+        holder.price.text = p.price.toCop()
 
-    override fun getItemCount() = items.size
+        // Portada con Coil; si el disco no tiene foto, se queda el fondo gris
+        if (p.imageUrl.isNotBlank()) {
+            holder.cover.load(p.imageUrl) {
+                crossfade(true)
+                placeholder(R.drawable.bg_cover)
+                error(R.drawable.bg_cover)
+            }
+        } else {
+            holder.cover.setImageResource(R.drawable.bg_cover)
+        }
+
+        holder.edit.setOnClickListener { onEdit(p) }
+        holder.delete.setOnClickListener { onDelete(p) }
+    }
+}
+
+// Compara por id para saber si es el mismo disco, y por contenido para saber si cambió
+object ProductDiff : DiffUtil.ItemCallback<Product>() {
+    override fun areItemsTheSame(a: Product, b: Product) = a.id == b.id
+    override fun areContentsTheSame(a: Product, b: Product) = a == b
 }

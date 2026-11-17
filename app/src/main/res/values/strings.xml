@@ -276,4 +276,10 @@
     <string name="user_updated">Usuario actualizado</string>
     <string name="error_own_account">No puedes eliminar tu propia cuenta</string>
     <string name="error_own_role">No puedes quitarte el rol de administrador ni suspender tu propia cuenta</string>
+
+    <string name="product_saved">Disco publicado</string>
+    <string name="product_updated">Disco actualizado</string>
+    <string name="error_price_invalid">Ingresa un precio válido</string>
+
+    <string name="error_image">No se pudo procesar la imagen</string>
 </resources>

@@ -1,8 +1,10 @@
 package com.example.vinylcdvault.di
 
 import com.example.vinylcdvault.data.FirebaseAuthRepository
+import com.example.vinylcdvault.data.FirebaseProductRepository
 import com.example.vinylcdvault.data.FirebaseUserRepository
 import com.example.vinylcdvault.repository.AuthRepository
+import com.example.vinylcdvault.repository.ProductRepository
 import com.example.vinylcdvault.repository.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,4 +20,7 @@ object AppContainer {
     val authRepository: AuthRepository by lazy { FirebaseAuthRepository(auth, firestore) }
 
     val userRepository: UserRepository by lazy { FirebaseUserRepository(firestore) }
+
+    val productRepository: ProductRepository by lazy { FirebaseProductRepository(firestore) }
+
 }
