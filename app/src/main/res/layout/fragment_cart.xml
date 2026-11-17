@@ -13,11 +13,25 @@
         android:layout_marginBottom="@dimen/spacing_medium"
         android:text="@string/cart_title" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCart"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tvCartEmpty"
+            style="@style/App.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/cart_empty"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Outlined"
@@ -35,24 +49,24 @@
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                 <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/cart_subtotal" />
-                <TextView style="@style/App.Text.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sample_subtotal" />
+                <TextView android:id="@+id/tvSubtotal" style="@style/App.Text.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/spacing_small" android:orientation="horizontal">
                 <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/cart_shipping" />
-                <TextView style="@style/App.Text.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sample_shipping" />
+                <TextView android:id="@+id/tvShipping" style="@style/App.Text.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/spacing_small" android:orientation="horizontal">
                 <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/cart_tax" />
-                <TextView style="@style/App.Text.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sample_tax" />
+                <TextView android:id="@+id/tvTax" style="@style/App.Text.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             </LinearLayout>
 
             <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="@dimen/spacing_medium" android:layout_marginBottom="@dimen/spacing_medium" android:background="@color/divider" />
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                 <TextView style="@style/App.Text.Subtitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/cart_total" />
-                <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sample_total" />
+                <TextView android:id="@+id/tvTotal" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

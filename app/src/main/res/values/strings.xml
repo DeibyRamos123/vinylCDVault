@@ -282,4 +282,11 @@
     <string name="error_price_invalid">Ingresa un precio válido</string>
 
     <string name="error_image">No se pudo procesar la imagen</string>
+
+    <string name="cart_empty">Tu carrito está vacío</string>
+    <string name="cart_item_removed">Disco quitado del carrito</string>
+    <string name="order_placed">Pedido realizado</string>
+    <string name="order_number">Pedido #%1$s</string>
+    <string name="order_status_title">Cambiar estado del pedido</string>
+    <string name="order_status_updated">Estado actualizado</string>
 </resources>

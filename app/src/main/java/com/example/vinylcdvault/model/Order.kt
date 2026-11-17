@@ -1,19 +1,36 @@
 package com.example.vinylcdvault.model
 
-data class Order(
-    val id: String,
-    val buyer: String,
-    val items: String,
-    val date: String,
-    val total: String,
-    val status: String
-)
+import java.io.Serializable
 
-object SampleOrders {
-    val orders = listOf(
-        Order("Pedido #1042", "Ana Torres", "Random Access Memories (Vinilo)", "03 nov 2026", "\$189.900", "Pendiente"),
-        Order("Pedido #1039", "Carlos Gómez", "Kill 'Em All (Vinilo) + Nevermind (CD)", "01 nov 2026", "\$209.800", "Enviado"),
-        Order("Pedido #1031", "Laura Pérez", "Discovery (CD)", "28 oct 2026", "\$59.900", "Entregado"),
-        Order("Pedido #1025", "Mateo Ruiz", "Kind of Blue (Vinilo)", "25 oct 2026", "\$139.900", "Entregado")
-    )
+/** Estados de entrega de un pedido (los cambia el vendedor). */
+object OrderStatus {
+    const val PENDING = "pending"
+    const val SHIPPED = "shipped"
+    const val DELIVERED = "delivered"
 }
+
+/** Estados del pago (la pasarela los actualizará en el siguiente paso). */
+object PaymentStatus {
+    const val PENDING = "pending"
+    const val PAID = "paid"
+    const val FAILED = "failed"
+}
+
+/** Pedido guardado en Firestore (colección "orders"). */
+data class Order(
+    val id: String = "",
+    val buyerId: String = "",
+    val buyerName: String = "",
+    val items: List<CartItem> = emptyList(),
+    val subtotal: Long = 0,
+    val shipping: Long = 0,
+    val tax: Long = 0,
+    val total: Long = 0,
+    val address: String = "",
+    val latitude: Double = 0.0,     // se llenan con la geolocalización
+    val longitude: Double = 0.0,
+    val paymentStatus: String = PaymentStatus.PENDING,
+    val status: String = OrderStatus.PENDING,
+    val sellerIds: List<String> = emptyList(),   // permite al vendedor encontrar sus pedidos
+    val createdAt: Long = 0
+) : Serializable

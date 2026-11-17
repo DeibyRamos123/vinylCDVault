@@ -1,0 +1,20 @@
+package com.example.vinylcdvault.repository
+
+import com.example.vinylcdvault.model.CartItem
+import com.example.vinylcdvault.model.Order
+import kotlinx.coroutines.flow.Flow
+
+/** Contrato para crear y consultar pedidos. */
+interface OrderRepository {
+    /** Crea el pedido con los discos del carrito, vacía el carrito y devuelve el id del pedido. */
+    suspend fun placeOrder(items: List<CartItem>, address: String): String
+
+    /** Pedidos del comprador con sesión abierta. */
+    fun observeMyOrders(): Flow<List<Order>>
+
+    /** Pedidos que incluyen discos del vendedor con sesión abierta. */
+    fun observeSellerOrders(): Flow<List<Order>>
+
+    /** Cambia el estado de entrega de un pedido. */
+    suspend fun updateStatus(orderId: String, status: String)
+}

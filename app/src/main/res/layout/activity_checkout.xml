@@ -54,11 +54,11 @@
                 android:hint="@string/checkout_address_hint">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPostalAddress"
                     android:minHeight="48dp"
-                    android:text="@string/sample_address"
                     android:textColor="@color/text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,7 +169,7 @@
                 android:orientation="horizontal">
 
                 <TextView style="@style/App.Text.Subtitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/cart_total" />
-                <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sample_total" />
+                <TextView style="@style/App.Text.Price" android:id="@+id/tvCheckoutTotal" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             </LinearLayout>
 
             <CheckBox

@@ -3,18 +3,29 @@ package com.example.vinylcdvault.ui.buyer
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinylcdvault.ui.common.OrderAdapter
-import com.example.vinylcdvault.ui.common.ProductAdapter
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.SampleData
-import com.example.vinylcdvault.model.SampleOrders
 import com.example.vinylcdvault.model.openProductDetail
+import com.example.vinylcdvault.ui.common.OrderAdapter
+import com.example.vinylcdvault.ui.common.OrdersViewModel
+import com.example.vinylcdvault.ui.common.OrdersViewModelFactory
+import com.example.vinylcdvault.ui.common.ProductAdapter
+import com.example.vinylcdvault.util.Resource
+import kotlinx.coroutines.launch
 
+/** Pantalla de lista reutilizable: "Mis pedidos" (datos reales) o "Favoritos" (modo "favorites"). */
 class ListActivity : AppCompatActivity() {
+
+    private val ordersViewModel: OrdersViewModel by viewModels { OrdersViewModelFactory() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
@@ -32,7 +43,17 @@ class ListActivity : AppCompatActivity() {
         } else {
             title.setText(R.string.profile_orders_title)
             rv.layoutManager = LinearLayoutManager(this)
-            rv.adapter = OrderAdapter(SampleOrders.orders)
+            val adapter = OrderAdapter()
+            rv.adapter = adapter
+
+            // Pedidos del comprador en tiempo real
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    ordersViewModel.myOrders.collect { state ->
+                        if (state is Resource.Success) adapter.submitList(state.data)
+                    }
+                }
+            }
         }
     }
 }
