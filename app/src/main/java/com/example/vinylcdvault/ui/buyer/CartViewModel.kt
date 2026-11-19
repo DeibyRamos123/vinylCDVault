@@ -40,9 +40,10 @@ class CartViewModel(
 
     fun remove(item: CartItem) = runOp(R.string.cart_item_removed) { cart.remove(item.productId) }
 
-    /** Crea el pedido con los discos recibidos y vacía el carrito. */
-    fun placeOrder(items: List<CartItem>, address: String) =
-        runOp(R.string.order_placed) { orders.placeOrder(items, address) }
+
+    /** Crea el pedido con los discos recibidos, la dirección y las coordenadas de entrega. */
+    fun placeOrder(items: List<CartItem>, address: String, latitude: Double, longitude: Double) =
+        runOp(R.string.order_placed) { orders.placeOrder(items, address, latitude, longitude) }
 
     fun resetOp() { _opState.value = null }
 

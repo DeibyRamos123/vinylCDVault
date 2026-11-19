@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 /** Contrato para crear y consultar pedidos. */
 interface OrderRepository {
     /** Crea el pedido con los discos del carrito, vacía el carrito y devuelve el id del pedido. */
-    suspend fun placeOrder(items: List<CartItem>, address: String): String
+    suspend fun placeOrder(items: List<CartItem>, address: String, latitude: Double, longitude: Double): String
 
     /** Pedidos del comprador con sesión abierta. */
     fun observeMyOrders(): Flow<List<Order>>

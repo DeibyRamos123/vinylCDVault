@@ -20,7 +20,10 @@ class FirebaseOrderRepository(
 
     private val orders get() = db.collection("orders")
 
-    override suspend fun placeOrder(items: List<CartItem>, address: String): String {
+    override suspend fun placeOrder(
+        items: List<CartItem>, address: String, latitude: Double, longitude: Double
+    ): String {
+
         val uid = auth.currentUser?.uid ?: throw IllegalStateException("Inicia sesión para comprar")
         if (items.isEmpty()) throw IllegalStateException("Tu carrito está vacío")
 
@@ -32,6 +35,7 @@ class FirebaseOrderRepository(
             id = orderRef.id, buyerId = uid, buyerName = buyerName, items = items,
             subtotal = subtotal, shipping = Pricing.shipping(items), tax = Pricing.tax(subtotal),
             total = Pricing.total(items), address = address,
+            latitude = latitude, longitude = longitude,
             sellerIds = items.map { it.sellerId }.filter { it.isNotBlank() }.distinct(),
             createdAt = System.currentTimeMillis()
         )

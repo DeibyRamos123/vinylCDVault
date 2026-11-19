@@ -62,14 +62,21 @@
                     android:textColor="@color/text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                style="@style/App.Text.Body"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLocation"
+                style="@style/App.ButtonOutlined"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:background="@drawable/bg_cover"
-                android:gravity="center"
-                android:text="@string/checkout_map_placeholder" />
+                android:text="@string/checkout_use_location" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                style="@style/App.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/checkout_location_none" />
 
             <TextView
                 style="@style/App.Text.Subtitle"

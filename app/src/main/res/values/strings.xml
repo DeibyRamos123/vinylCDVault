@@ -289,4 +289,12 @@
     <string name="order_number">Pedido #%1$s</string>
     <string name="order_status_title">Cambiar estado del pedido</string>
     <string name="order_status_updated">Estado actualizado</string>
+
+
+    <string name="checkout_use_location">Usar mi ubicación actual</string>
+    <string name="checkout_location_none">Ubicación no capturada</string>
+    <string name="checkout_location_loading">Obteniendo ubicación…</string>
+    <string name="checkout_location_ok">Ubicación capturada (%1$.5f, %2$.5f)</string>
+    <string name="location_permission_denied">Sin permiso de ubicación. Escribe la dirección a mano</string>
+    <string name="location_unavailable">No se pudo obtener la ubicación. Activa el GPS e intenta de nuevo</string>
 </resources>
