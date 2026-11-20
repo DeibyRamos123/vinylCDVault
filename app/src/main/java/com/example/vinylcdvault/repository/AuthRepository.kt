@@ -1,6 +1,7 @@
 package com.example.vinylcdvault.repository
 
 import com.example.vinylcdvault.model.User
+import com.example.vinylcdvault.util.Resource
 
 /**
  * Contrato de autenticación. Los ViewModels dependen de esta interfaz,
@@ -21,6 +22,8 @@ interface AuthRepository {
 
     /** Indica si hay una sesión guardada en el dispositivo. */
     fun hasSession(): Boolean
+
+    suspend fun loginWithGoogle(idToken: String): Resource<User>
 
     /** Cierra la sesión. */
     fun logout()

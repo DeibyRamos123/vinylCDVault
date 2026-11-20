@@ -30,6 +30,15 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
     /** Inicia sesión con correo y contraseña. */
     fun login(email: String, password: String) = launchLogin { repository.login(email, password) }
 
+    /** Inicia sesión con google. */
+
+    fun loginWithGoogle(idToken: String) {
+        viewModelScope.launch {
+            _loginState.value = Resource.Loading
+            _loginState.value = repository.loginWithGoogle(idToken)
+        }
+    }
+
     /** Entra con la sesión ya guardada (se usa después de verificar la huella). */
     fun restoreSession() = launchLogin {
         repository.currentProfile() ?: throw IllegalStateException("Inicia sesión con tu correo primero")

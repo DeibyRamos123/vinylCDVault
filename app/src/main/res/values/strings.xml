@@ -8,8 +8,12 @@
     <string name="login_button">Iniciar sesión</string>
     <string name="login_or">o</string>
     <string name="login_biometric">Ingresar con huella</string>
+    <string name="login_google">Continuar con Google</string>
+    <string name="login_google_error">No se pudo iniciar con Google</string>
     <string name="login_register">¿No tienes cuenta? Regístrate</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="google_web_client_id">913266437965-5ia79k7ep70guvinhvlt00emv2pgmio5.apps.googleusercontent.com.apps.googleusercontent.com</string>
+
 
     <string name="splash_tagline">Tu tienda de vinilos y CDs</string>
     <string name="recover_title">Recuperar contraseña</string>

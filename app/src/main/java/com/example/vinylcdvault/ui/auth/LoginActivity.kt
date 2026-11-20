@@ -7,6 +7,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.credentials.CredentialManager
+import androidx.credentials.CustomCredential
+import androidx.credentials.GetCredentialRequest
+import androidx.credentials.exceptions.GetCredentialCancellationException
+import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -15,21 +20,22 @@ import com.example.vinylcdvault.model.Roles
 import com.example.vinylcdvault.model.User
 import com.example.vinylcdvault.ui.admin.AdminActivity
 import com.example.vinylcdvault.ui.buyer.BuyerActivity
-import com.example.vinylcdvault.ui.common.BiometricHelper
 import com.example.vinylcdvault.ui.seller.SellerActivity
 import com.example.vinylcdvault.util.Resource
+import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 
-/** Pantalla de inicio de sesión: correo y contraseña, o huella si ya hay sesión guardada. */
+/** Pantalla de inicio de sesión: correo y contraseña, o Google. Si ya hay sesión guardada, entra directo. */
 class LoginActivity : AppCompatActivity() {
 
     private val viewModel: AuthViewModel by viewModels { AuthViewModelFactory() }
 
     private lateinit var btnLogin: MaterialButton
-    private lateinit var btnBiometric: MaterialButton
+    private lateinit var btnGoogle: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
         val etEmail = findViewById<TextInputEditText>(R.id.etEmail)
         val etPassword = findViewById<TextInputEditText>(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
-        btnBiometric = findViewById(R.id.btnBiometric)
+        btnGoogle = findViewById(R.id.btnGoogle)
 
         findViewById<View>(R.id.tvForgotPassword).setOnClickListener {
             startActivity(Intent(this, RecoverPasswordActivity::class.java))
@@ -60,16 +66,15 @@ class LoginActivity : AppCompatActivity() {
             if (tilEmail.error == null && tilPassword.error == null) viewModel.login(email, password)
         }
 
-        // Login con huella: solo funciona si ya hay una sesión de Firebase guardada
-        btnBiometric.setOnClickListener {
-            if (viewModel.hasSession()) {
-                BiometricHelper.authenticate(this) { viewModel.restoreSession() }
-            } else {
-                Toast.makeText(this, R.string.login_need_session, Toast.LENGTH_LONG).show()
-            }
-        }
+        // Login con Google
+        btnGoogle.setOnClickListener { signInWithGoogle() }
 
         observeLogin()
+
+        // Si ya hay sesión guardada, entra directo sin pedir credenciales
+        if (savedInstanceState == null && viewModel.hasSession()) {
+            viewModel.restoreSession()
+        }
     }
 
     // Reacciona a los estados del ViewModel mientras la pantalla está visible
@@ -95,10 +100,34 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // Abre el selector de cuentas de Google y manda el idToken al ViewModel
+    private fun signInWithGoogle() {
+        val option = GetSignInWithGoogleOption.Builder(getString(R.string.default_web_client_id)).build()
+        val request = GetCredentialRequest.Builder().addCredentialOption(option).build()
+
+        lifecycleScope.launch {
+            try {
+                val result = CredentialManager.create(this@LoginActivity)
+                    .getCredential(this@LoginActivity, request)
+                val credential = result.credential
+                if (credential is CustomCredential &&
+                    credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
+                ) {
+                    val idToken = GoogleIdTokenCredential.createFrom(credential.data).idToken
+                    viewModel.loginWithGoogle(idToken)
+                }
+            } catch (e: GetCredentialCancellationException) {
+                // El usuario cerró el selector: no hace falta mostrar error
+            } catch (e: GetCredentialException) {
+                Toast.makeText(this@LoginActivity, R.string.login_google_error, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
     // Evita dobles toques mientras se espera la respuesta del servidor
     private fun setLoading(loading: Boolean) {
         btnLogin.isEnabled = !loading
-        btnBiometric.isEnabled = !loading
+        btnGoogle.isEnabled = !loading
     }
 
     // El rol que viene de Firestore decide a qué panel entra el usuario

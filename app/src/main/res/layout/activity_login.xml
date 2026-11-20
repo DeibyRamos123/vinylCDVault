@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- pantalla para que permita hacer scroll solo permite tener un hijo -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
     android:fillViewport="true">
 
-    <!-- Orientación de la pantalla el linear layout es similar a un div en HTML -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:padding="@dimen/screen_padding">
 
-        <!-- Logo -->
         <ImageView
             android:id="@+id/ivLogo"
             android:layout_width="@dimen/logo_size"
@@ -54,10 +52,9 @@
             android:textColor="@color/text_secondary"
             android:textSize="@dimen/text_body" />
 
-        <!-- Formulario -->
         <LinearLayout
-            android:layout_width="339dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
             android:orientation="vertical"
             android:padding="@dimen/card_padding">
@@ -137,20 +134,18 @@
                 android:textColor="@color/text_secondary" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnBiometric"
+                android:id="@+id/btnGoogle"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
-                android:text="@string/login_biometric"
+                android:text="@string/login_google"
                 android:textAllCaps="false"
                 android:textColor="@color/primary"
                 app:cornerRadius="@dimen/corner_radius"
-                app:iconTint="@color/primary"
                 app:strokeColor="@color/primary" />
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 </ScrollView>

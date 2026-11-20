@@ -12,7 +12,20 @@
           "package_name": "com.example.vinylcdvault"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "913266437965-p83bem7k0rdric1ljg0n4i6g9qravgls.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vinylcdvault",
+            "certificate_hash": "07f1e28acfc21773df971b6236cfb9a7a34072a3"
+          }
+        },
+        {
+          "client_id": "913266437965-5ia79k7ep70guvinhvlt00emv2pgmio5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC-Iz0PVKMd_xEtWIyWAMjqssGcjvqDij0"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913266437965-5ia79k7ep70guvinhvlt00emv2pgmio5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
