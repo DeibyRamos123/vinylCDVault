@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:minHeight="48dp"
-            android:textColor="@color/text_dark" />
+            android:textColor="@color/primary_dark" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <HorizontalScrollView
@@ -37,22 +37,47 @@
         android:layout_marginTop="@dimen/spacing_small"
         android:scrollbars="none">
 
-        <LinearLayout
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgGenre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_small" android:text="@string/filter_all" />
-            <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_small" android:text="@string/filter_vinyl" />
-            <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_small" android:text="@string/filter_cd" />
-            <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/filter_new" />
-        </LinearLayout>
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true" />
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCatalog"
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgFormat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true" />
+    </HorizontalScrollView>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/spacing_small"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCatalog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tvCatalogEmpty"
+            style="@style/App.Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/catalog_no_results"
+            android:visibility="gone" />
+    </FrameLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
     <LinearLayout
@@ -29,7 +30,7 @@
             android:layout_marginTop="@dimen/spacing_medium">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSearch"
+                android:id="@+id/tvHomeSearch"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
                 android:hint="@string/home_search_placeholder"
@@ -75,17 +76,11 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:scrollbars="none">
 
-            <LinearLayout
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgHomeGenres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_small" android:text="@string/genre_rock" />
-                <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_small" android:text="@string/genre_electronic" />
-                <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_small" android:text="@string/genre_jazz" />
-                <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_small" android:text="@string/genre_indie" />
-                <TextView style="@style/App.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/genre_soundtracks" />
-            </LinearLayout>
+                app:singleLine="true" />
         </HorizontalScrollView>
 
         <TextView

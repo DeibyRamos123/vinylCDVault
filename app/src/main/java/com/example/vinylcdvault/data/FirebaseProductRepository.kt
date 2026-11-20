@@ -43,7 +43,8 @@ class FirebaseProductRepository(private val db: FirebaseFirestore) : ProductRepo
                 "format" to product.format,
                 "price" to product.price,
                 "condition" to product.condition,
-                "description" to product.description
+                "description" to product.description,
+                "genre" to product.genre,
             )
             if (imageBytes != null) data["imageUrl"] = CloudinaryUploader.upload(imageBytes)
             products.document(product.id).update(data).await()

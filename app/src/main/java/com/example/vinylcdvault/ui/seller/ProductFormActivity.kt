@@ -28,6 +28,8 @@ import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.example.vinylcdvault.ui.common.Genres
+import com.google.android.material.chip.Chip
 import java.io.File
 
 /** Formulario para publicar un disco nuevo o editar uno existente (si llega "product" por el Intent). */
@@ -86,6 +88,18 @@ class ProductFormActivity : AppCompatActivity() {
 
         // Modo editar: se rellenan los campos con el disco recibido
         val product = intent.getSerializableExtra("product") as? Product
+
+        // Chips de género: se arman desde la lista de géneros y cada chip guarda su código en tag
+        val cgGenre = findViewById<ChipGroup>(R.id.cgGenre)
+        Genres.all.forEach { genre ->
+            val chip = layoutInflater.inflate(R.layout.item_filter_chip, cgGenre, false) as Chip
+            chip.id = View.generateViewId()
+            chip.setText(genre.labelRes)
+            chip.tag = genre.code
+            cgGenre.addView(chip)
+            chip.isChecked = genre.code == (product?.genre?.takeIf { it.isNotBlank() } ?: Genres.DEFAULT)
+        }
+
         if (product != null) {
             findViewById<TextView>(R.id.tvFormTitle).setText(R.string.form_edit_title)
             etTitle.setText(product.title)
@@ -121,9 +135,11 @@ class ProductFormActivity : AppCompatActivity() {
 
             // Al crear, el disco queda asociado al vendedor con sesión abierta
             val base = product ?: Product(sellerId = AppContainer.auth.currentUser?.uid.orEmpty())
+            val genre = cgGenre.findViewById<Chip>(cgGenre.checkedChipId)?.tag as? String ?: Genres.DEFAULT
             val updated = base.copy(
                 title = title, artist = artist, format = format, price = price!!,
-                condition = condition, description = etDescription.text.toString().trim()
+                condition = condition, description = etDescription.text.toString().trim(),
+                genre = genre
             )
 
             lifecycleScope.launch {

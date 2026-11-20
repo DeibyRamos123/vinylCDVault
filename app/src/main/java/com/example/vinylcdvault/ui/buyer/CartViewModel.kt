@@ -42,8 +42,12 @@ class CartViewModel(
 
 
     /** Crea el pedido con los discos recibidos, la dirección y las coordenadas de entrega. */
-    fun placeOrder(items: List<CartItem>, address: String, latitude: Double, longitude: Double) =
-        runOp(R.string.order_placed) { orders.placeOrder(items, address, latitude, longitude) }
+    fun placeOrder(
+        items: List<CartItem>, address: String, latitude: Double, longitude: Double,
+        paymentReference: String, transactionId: String
+    ) = runOp(R.string.order_placed) {
+        orders.placeOrder(items, address, latitude, longitude, paymentReference, transactionId)
+    }
 
     fun resetOp() { _opState.value = null }
 

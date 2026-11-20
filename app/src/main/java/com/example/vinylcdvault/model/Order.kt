@@ -30,6 +30,8 @@ data class Order(
     val latitude: Double = 0.0,     // se llenan con la geolocalización
     val longitude: Double = 0.0,
     val paymentStatus: String = PaymentStatus.PENDING,
+    val paymentReference: String = "",   // referencia única enviada a Wompi
+    val transactionId: String = "",      // id de la transacción que devuelve Wompi
     val status: String = OrderStatus.PENDING,
     val sellerIds: List<String> = emptyList(),   // permite al vendedor encontrar sus pedidos
     val createdAt: Long = 0

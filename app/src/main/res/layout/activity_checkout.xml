@@ -78,95 +78,17 @@
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/checkout_location_none" />
 
-            <TextView
-                style="@style/App.Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:text="@string/checkout_payment_title" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
-
-                <RadioButton
-                    android:id="@+id/rbCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/pay_card"
-                    android:textColor="@color/text_dark"
-                    app:buttonTint="@color/primary" />
-
-                <RadioButton
-                    android:id="@+id/rbPse"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pay_pse"
-                    android:textColor="@color/text_dark"
-                    app:buttonTint="@color/primary" />
-
-                <RadioButton
-                    android:id="@+id/rbNequi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pay_nequi"
-                    android:textColor="@color/text_dark"
-                    app:buttonTint="@color/primary" />
-            </RadioGroup>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/App.Input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:hint="@string/card_number_hint">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:minHeight="48dp"
-                    android:textColor="@color/text_dark" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/App.Input"
-                    android:layout_width="0dp"
+                <TextView
+                    style="@style/App.Text.Body"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_small"
-                    android:layout_weight="1"
-                    android:hint="@string/card_expiry_hint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="date"
-                        android:minHeight="48dp"
-                        android:textColor="@color/text_dark" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/App.Input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/card_cvv_hint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberPassword"
-                        android:minHeight="48dp"
-                        android:textColor="@color/text_dark" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:text="@string/checkout_secure_note" />
             </LinearLayout>
 
             <LinearLayout

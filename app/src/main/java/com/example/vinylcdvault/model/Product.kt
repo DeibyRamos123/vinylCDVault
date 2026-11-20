@@ -20,7 +20,8 @@ data class Product(
     val description: String = "",
     val imageUrl: String = "",      // se llena cuando se suba la foto (parte B)
     val sellerId: String = "",      // uid del vendedor que lo publicó
-    val createdAt: Long = 0         // fecha de creación en milisegundos
+    val createdAt: Long = 0,         // fecha de creación en milisegundos
+    val genre: String = ""          // código del género (ver Genres); vacío en discos antiguos
 ) : Serializable
 
 /** Datos de ejemplo que usan el carrito y los favoritos hasta que se conecten a Firestore. */

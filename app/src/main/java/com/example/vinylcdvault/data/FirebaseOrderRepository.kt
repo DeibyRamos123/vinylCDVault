@@ -2,6 +2,7 @@ package com.example.vinylcdvault.data
 
 import com.example.vinylcdvault.model.CartItem
 import com.example.vinylcdvault.model.Order
+import com.example.vinylcdvault.model.PaymentStatus
 import com.example.vinylcdvault.repository.OrderRepository
 import com.example.vinylcdvault.util.Pricing
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +22,8 @@ class FirebaseOrderRepository(
     private val orders get() = db.collection("orders")
 
     override suspend fun placeOrder(
-        items: List<CartItem>, address: String, latitude: Double, longitude: Double
+        items: List<CartItem>, address: String, latitude: Double, longitude: Double,
+        paymentReference: String, transactionId: String
     ): String {
 
         val uid = auth.currentUser?.uid ?: throw IllegalStateException("Inicia sesión para comprar")
@@ -36,6 +38,8 @@ class FirebaseOrderRepository(
             subtotal = subtotal, shipping = Pricing.shipping(items), tax = Pricing.tax(subtotal),
             total = Pricing.total(items), address = address,
             latitude = latitude, longitude = longitude,
+            paymentReference = paymentReference, transactionId = transactionId,
+            paymentStatus = PaymentStatus.PAID,   // solo se llama cuando Wompi aprobó el pago
             sellerIds = items.map { it.sellerId }.filter { it.isNotBlank() }.distinct(),
             createdAt = System.currentTimeMillis()
         )

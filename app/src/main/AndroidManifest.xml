@@ -16,7 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VinylCDVault">
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -80,6 +79,11 @@
         <activity
             android:name=".ui.buyer.ListActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.buyer.PaymentActivity"
+            android:exported="false"
+            android:theme="@style/Theme.VinylCDVault"
             android:windowSoftInputMode="adjustResize" />
     </application>
 
