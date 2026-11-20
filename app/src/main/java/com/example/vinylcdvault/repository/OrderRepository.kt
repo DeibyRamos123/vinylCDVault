@@ -20,4 +20,7 @@ interface OrderRepository {
 
     /** Cambia el estado de entrega de un pedido. */
     suspend fun updateStatus(orderId: String, status: String)
+
+    /** Todos los pedidos de la tienda (vista del administrador). */
+    fun observeAllOrders(): Flow<List<Order>>
 }

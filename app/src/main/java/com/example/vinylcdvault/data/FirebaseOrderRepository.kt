@@ -62,6 +62,8 @@ class FirebaseOrderRepository(
         orders.document(orderId).update("status", status).await()
     }
 
+    override fun observeAllOrders(): Flow<List<Order>> = observe { _ -> orders }
+
     // Escucha en tiempo real una consulta de pedidos y los ordena del más reciente al más antiguo
     private fun observe(query: (String) -> Query): Flow<List<Order>> = callbackFlow {
         val uid = auth.currentUser?.uid

@@ -12,3 +12,10 @@ fun Long.toCop(): String =
 /** Convierte milisegundos en una fecha legible, por ejemplo "17 nov 2026". */
 fun Long.toDateText(): String =
     SimpleDateFormat("dd MMM yyyy", Locale("es", "CO")).format(Date(this))
+
+/** Monto corto para espacios pequeños: 12400000 → "$12,4 M", 85000 → "$85 mil". */
+fun Long.toCompactCop(): String = when {
+    this >= 1_000_000 -> "$" + String.format(Locale("es", "CO"), "%.1f", this / 1_000_000.0) + " M"
+    this >= 1_000 -> "$" + (this / 1_000) + " mil"
+    else -> "$" + this
+}

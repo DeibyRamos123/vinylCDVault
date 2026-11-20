@@ -352,4 +352,18 @@
     <string name="genre_other">Otros</string>
     <string name="form_genre_label">Género *</string>
     <string name="catalog_no_results">No encontramos discos con ese filtro</string>
+
+    <string name="value_placeholder">—</string>
+    <string name="admin_ops_title">Operación de la tienda</string>
+    <string name="admin_ops_pending">Pedidos por enviar</string>
+    <string name="admin_ops_shipped">Pedidos en camino</string>
+    <string name="admin_ops_suspended">Usuarios suspendidos</string>
+    <string name="admin_ops_nophoto">Discos sin portada</string>
+    <string name="admin_recent_orders_title">Últimos pedidos</string>
+    <string name="admin_recent_empty">Aún no hay pedidos pagados</string>
+    <string name="admin_recent_line">%1$s · %2$s · %3$s</string>
+    <string name="reports_orders_count">%1$d pedidos pagados</string>
+    <string name="reports_empty">Aún no hay ventas registradas</string>
+    <string name="reports_top_line">%1$d. %2$s · %3$d vendidos</string>
+    <string name="reports_nothing_to_export">No hay ventas para exportar</string>
 </resources>

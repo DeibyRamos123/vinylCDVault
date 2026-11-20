@@ -30,6 +30,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/cardUsers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/spacing_small"
@@ -38,11 +39,12 @@
                 android:orientation="vertical"
                 android:padding="@dimen/card_padding">
 
-                <TextView style="@style/App.Text.Title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_users_value" />
+                <TextView android:id="@+id/tvStatUsers" style="@style/App.Text.Title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_users" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/cardProducts"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -50,7 +52,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/card_padding">
 
-                <TextView style="@style/App.Text.Title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_products_value" />
+                <TextView android:id="@+id/tvStatProducts" style="@style/App.Text.Title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_products" />
             </LinearLayout>
         </LinearLayout>
@@ -70,7 +72,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/card_padding">
 
-                <TextView style="@style/App.Text.Title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_orders_value" />
+                <TextView android:id="@+id/tvStatOrders" style="@style/App.Text.Title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_orders" />
             </LinearLayout>
 
@@ -82,7 +84,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/card_padding">
 
-                <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_sales_value" android:textSize="@dimen/text_title" />
+                <TextView android:id="@+id/tvStatSales" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" android:textSize="@dimen/text_title" />
                 <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_stat_sales" />
             </LinearLayout>
         </LinearLayout>
@@ -92,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
-            android:text="@string/admin_moderation_title" />
+            android:text="@string/admin_ops_title" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.Material3.CardView.Outlined"
@@ -110,22 +112,29 @@
                 android:padding="@dimen/card_padding">
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                    <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/admin_pending_listings" />
-                    <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_pending_listings_value" />
+                    <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/admin_ops_pending" />
+                    <TextView android:id="@+id/tvOpToShip" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 </LinearLayout>
 
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="@dimen/spacing_small" android:layout_marginBottom="@dimen/spacing_small" android:background="@color/divider" />
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                    <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/admin_flagged_reviews" />
-                    <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_flagged_reviews_value" />
+                    <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/admin_ops_shipped" />
+                    <TextView android:id="@+id/tvOpShipped" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 </LinearLayout>
 
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="@dimen/spacing_small" android:layout_marginBottom="@dimen/spacing_small" android:background="@color/divider" />
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                    <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/admin_banned_users" />
-                    <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/admin_banned_users_value" />
+                    <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/admin_ops_suspended" />
+                    <TextView android:id="@+id/tvOpSuspended" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="@dimen/spacing_small" android:layout_marginBottom="@dimen/spacing_small" android:background="@color/divider" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView style="@style/App.Text.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/admin_ops_nophoto" />
+                    <TextView android:id="@+id/tvOpNoPhoto" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -135,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
-            android:text="@string/admin_recent_title" />
+            android:text="@string/admin_recent_orders_title" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.Material3.CardView.Outlined"
@@ -147,16 +156,10 @@
             app:strokeColor="@color/input_stroke">
 
             <LinearLayout
+                android:id="@+id/llRecentOrders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/admin_recent_1" />
-                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/admin_recent_2" />
-                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/admin_recent_3" />
-            </LinearLayout>
+                android:orientation="vertical" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
