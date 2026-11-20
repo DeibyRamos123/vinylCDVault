@@ -1,5 +1,6 @@
 package com.example.vinylcdvault.ui.buyer
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
@@ -18,15 +19,17 @@ import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.Product
 import com.example.vinylcdvault.ui.common.FavoriteViewModel
 import com.example.vinylcdvault.ui.common.FavoriteViewModelFactory
+import com.example.vinylcdvault.ui.common.showAvatar
 import com.example.vinylcdvault.util.Resource
 import com.example.vinylcdvault.util.toCop
 import kotlinx.coroutines.launch
 
-/** Detalle de un disco: muestra sus datos, permite agregarlo al carrito y marcarlo como favorito. */
+/** Detalle de un disco: datos, vendedor, carrito y favoritos. */
 class ProductDetailActivity : AppCompatActivity() {
 
     private val cartViewModel: CartViewModel by viewModels { CartViewModelFactory() }
     private val favoriteViewModel: FavoriteViewModel by viewModels { FavoriteViewModelFactory() }
+    private val sellerViewModel: SellerPublicViewModel by viewModels { SellerPublicViewModelFactory() }
 
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +50,7 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         val btnFavorite = findViewById<ImageButton>(R.id.btnFavorite)
+        val rowSeller = findViewById<View>(R.id.rowSeller)
         findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
         findViewById<View>(R.id.btnAddToCart).setOnClickListener { cartViewModel.add(p) }
         btnFavorite.setOnClickListener {
@@ -55,10 +59,31 @@ class ProductDetailActivity : AppCompatActivity() {
             Toast.makeText(this, if (adding) R.string.favorite_added else R.string.favorite_removed, Toast.LENGTH_SHORT).show()
         }
 
+        // La fila del vendedor aparece cuando se cargan sus datos; al tocarla abre su perfil público
+        if (p.sellerId.isNotBlank()) {
+            sellerViewModel.loadSeller(p.sellerId)
+            rowSeller.setOnClickListener {
+                startActivity(
+                    Intent(this, SellerPublicActivity::class.java)
+                        .putExtra(SellerPublicActivity.EXTRA_SELLER_ID, p.sellerId)
+                )
+            }
+        }
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 // El corazón se pinta según si el disco está en favoritos
                 launch { favoriteViewModel.ids.collect { renderFavorite(btnFavorite, p.id in it) } }
+                // Nombre y foto del vendedor
+                launch {
+                    sellerViewModel.seller.collect { state ->
+                        if (state is Resource.Success) {
+                            rowSeller.visibility = View.VISIBLE
+                            findViewById<TextView>(R.id.tvSellerName).text = state.data.name
+                            findViewById<ImageView>(R.id.ivSellerAvatar).showAvatar(state.data.photoUrl)
+                        }
+                    }
+                }
                 // Aviso de agregado al carrito o de error
                 launch {
                     cartViewModel.opState.collect { state ->

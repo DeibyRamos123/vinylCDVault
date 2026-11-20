@@ -16,4 +16,10 @@ interface UserRepository {
 
     /** Eliminación lógica: marca al usuario como eliminado e inactivo. */
     suspend fun deleteUser(uid: String)
+
+    /** Perfil de cualquier usuario por su id; null si no existe o fue eliminado. */
+    suspend fun getUser(uid: String): User?
+
+    /** Sube la foto de perfil (ya comprimida) y guarda su URL en el perfil del usuario. */
+    suspend fun updatePhoto(uid: String, imageBytes: ByteArray)
 }

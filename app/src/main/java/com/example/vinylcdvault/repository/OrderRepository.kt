@@ -26,4 +26,7 @@ interface OrderRepository {
     /** Todos los pedidos de la tienda (vista del administrador). */
     fun observeAllOrders(): Flow<List<Order>>
 
+    /** El vendedor acepta o rechaza una solicitud de retracto. Al aceptar, el pago queda con reembolso pendiente. */
+    suspend fun resolveWithdrawal(orderId: String, accept: Boolean)
+
 }

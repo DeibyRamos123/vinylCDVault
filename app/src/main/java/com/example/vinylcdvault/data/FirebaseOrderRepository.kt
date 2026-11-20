@@ -76,6 +76,16 @@ class FirebaseOrderRepository(
         ).await()
     }
 
+    override suspend fun resolveWithdrawal(orderId: String, accept: Boolean) {
+        val data = mutableMapOf<String, Any>(
+            "withdrawalStatus" to if (accept) WithdrawalStatus.ACCEPTED else WithdrawalStatus.REJECTED,
+            "withdrawalResolvedAt" to System.currentTimeMillis()
+        )
+        // Aceptado: el dinero ya no cuenta como venta y queda pendiente de devolver
+        if (accept) data["paymentStatus"] = PaymentStatus.REFUND_PENDING
+        orders.document(orderId).update(data).await()
+    }
+
     override fun observeAllOrders(): Flow<List<Order>> = observe { _ -> orders }
 
     // Escucha en tiempo real una consulta de pedidos y los ordena del más reciente al más antiguo

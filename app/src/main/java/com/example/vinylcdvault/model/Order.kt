@@ -9,16 +9,19 @@ object OrderStatus {
     const val DELIVERED = "delivered"
 }
 
-/** Estados del pago (la pasarela los actualizará en el siguiente paso). */
+/** Estados del pago. REFUND_PENDING: el vendedor aceptó un retracto y debe devolver el dinero. */
 object PaymentStatus {
     const val PENDING = "pending"
     const val PAID = "paid"
     const val FAILED = "failed"
+    const val REFUND_PENDING = "refund_pending"
 }
-
+/** Estado de la solicitud de retracto de un pedido. */
 object WithdrawalStatus {
     const val NONE = ""
     const val REQUESTED = "requested"
+    const val ACCEPTED = "accepted"
+    const val REJECTED = "rejected"
 }
 
 /** Pedido guardado en Firestore (colección "orders"). */
@@ -42,5 +45,6 @@ data class Order(
     val createdAt: Long = 0,
     val deliveredAt: Long = 0,                          // cuándo el vendedor marcó la entrega
     val withdrawalStatus: String = WithdrawalStatus.NONE,
-    val withdrawalAt: Long = 0                          // cuándo se solicitó el retracto
+    val withdrawalAt: Long = 0,                          // cuándo se solicitó el retracto
+    val withdrawalResolvedAt: Long = 0
 ) : Serializable

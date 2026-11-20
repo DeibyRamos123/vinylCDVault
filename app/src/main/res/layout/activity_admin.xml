@@ -12,16 +12,15 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/adminContainer"
-        android:name="com.example.vinylcdvault.ui.admin.AdminDashboardFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/adminContainer"
+            android:name="com.example.vinylcdvault.ui.admin.AdminDashboardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <include
             android:id="@+id/loadingOverlay"
-            layout="@layout/view_loading"/>
+            layout="@layout/view_loading" />
 
     </FrameLayout>
 

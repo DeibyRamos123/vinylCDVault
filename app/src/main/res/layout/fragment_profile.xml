@@ -19,14 +19,26 @@
             android:text="@string/profile_title" />
 
         <ImageView
+            android:id="@+id/ivAvatar"
             android:layout_width="@dimen/avatar_size"
             android:layout_height="@dimen/avatar_size"
             android:layout_marginTop="@dimen/spacing_medium"
             android:background="@drawable/bg_logo_circle"
-            android:contentDescription="@string/profile_title"
-            android:padding="24dp"
-            android:src="@drawable/ic_person"
-            app:tint="@color/white" />
+            android:clickable="true"
+            android:contentDescription="@string/photo_change"
+            android:focusable="true"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tvChangePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/spacing_small"
+            android:text="@string/photo_change"
+            android:textColor="@color/accent_dark"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold" />
 
         
         <TextView

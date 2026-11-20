@@ -47,6 +47,18 @@ class OrdersViewModel(private val repository: OrderRepository) : ViewModel() {
         }
     }
 
+    /** El vendedor responde una solicitud de retracto. */
+    fun resolveWithdrawal(orderId: String, accept: Boolean) {
+        viewModelScope.launch {
+            _opState.value = try {
+                repository.resolveWithdrawal(orderId, accept)
+                Resource.Success(if (accept) R.string.withdrawal_accepted_ok else R.string.withdrawal_rejected_ok)
+            } catch (e: Exception) {
+                Resource.Error(e.toFriendlyMessage())
+            }
+        }
+    }
+
     fun resetOp() { _opState.value = null }
 }
 

@@ -18,29 +18,39 @@
             android:layout_height="wrap_content"
             android:text="@string/seller_profile_title" />
 
-        <TextView
+        <ImageView
+            android:id="@+id/ivAvatar"
             android:layout_width="@dimen/avatar_size"
             android:layout_height="@dimen/avatar_size"
             android:layout_marginTop="@dimen/spacing_medium"
             android:background="@drawable/bg_logo_circle"
-            android:gravity="center"
-            android:text="🏪"
-            android:textSize="40sp" />
+            android:clickable="true"
+            android:contentDescription="@string/photo_change"
+            android:focusable="true"
+            android:scaleType="centerCrop" />
 
         <TextView
-            style="@style/App.Text.Subtitle"
+            android:id="@+id/tvChangePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/spacing_small"
+            android:text="@string/photo_change"
+            android:textColor="@color/accent_dark"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/tvSellerName"
+            style="@style/App.Text.Subtitle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/seller_store_name" />
+            android:layout_height="wrap_content" />
 
         <TextView
-            style="@style/App.Text.Body"
             android:id="@+id/tvSellerEmail"
+            style="@style/App.Text.Body"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/seller_store_email" />
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +68,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_medium">
 
-                <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seller_stat_listings_value" />
+                <TextView android:id="@+id/tvStatProducts" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seller_stat_listings" />
             </LinearLayout>
 
@@ -72,7 +82,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_medium">
 
-                <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seller_stat_sales_value" />
+                <TextView android:id="@+id/tvStatSales" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
                 <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seller_stat_sales" />
             </LinearLayout>
 
@@ -85,8 +95,8 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_medium">
 
-                <TextView style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seller_stat_rating_value" />
-                <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seller_stat_rating" />
+                <TextView android:id="@+id/tvStatRevenue" style="@style/App.Text.Price" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/value_placeholder" />
+                <TextView style="@style/App.Text.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/seller_stat_revenue" />
             </LinearLayout>
         </LinearLayout>
 
@@ -104,13 +114,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView android:id="@+id/rowStore" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_store" />
+                <TextView android:id="@+id/rowStore" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_store" android:text="@string/seller_row_store" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView android:id="@+id/rowShipping" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_shipping" />
+                <TextView android:id="@+id/rowShipping" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_shipping" android:text="@string/seller_row_shipping" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView android:id="@+id/rowPayments" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_payments" />
+                <TextView android:id="@+id/rowPayments" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_payments" android:text="@string/seller_row_payments" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView android:id="@+id/rowHelp" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/seller_row_help" />
+                <TextView android:id="@+id/rowHelp" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_help" android:text="@string/seller_row_help" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

@@ -70,6 +70,17 @@ class FirebaseUserRepository(private val db: FirebaseFirestore) : UserRepository
         users.document(uid).update(mapOf("deleted" to true, "active" to false)).await()
     }
 
+    override suspend fun getUser(uid: String): User? =
+        users.document(uid).get().await().toObject(User::class.java)
+            ?.copy(uid = uid)
+            ?.takeIf { !it.deleted }
+
+    override suspend fun updatePhoto(uid: String, imageBytes: ByteArray) {
+        // La foto se sube a Cloudinary y solo se guarda su dirección en Firestore
+        val url = CloudinaryUploader.upload(imageBytes)
+        users.document(uid).update("photoUrl", url).await()
+    }
+
     private companion object {
         const val SECONDARY_APP = "secondary"
     }

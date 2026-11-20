@@ -38,7 +38,7 @@ object WithdrawalPolicy {
 
     /** Indica si el pedido puede solicitar retracto o cancelación en este momento. */
     fun check(order: Order, now: Long = System.currentTimeMillis()): Check = when {
-        order.withdrawalStatus == WithdrawalStatus.REQUESTED -> Check.ALREADY_REQUESTED
+        order.withdrawalStatus != WithdrawalStatus.NONE -> Check.ALREADY_REQUESTED
         order.status != OrderStatus.DELIVERED -> Check.ALLOWED          // aún no entregado: cancelación
         now <= deadline(baseDate(order)) -> Check.ALLOWED
         else -> Check.EXPIRED

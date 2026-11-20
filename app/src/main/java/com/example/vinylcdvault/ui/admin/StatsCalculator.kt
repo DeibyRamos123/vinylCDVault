@@ -37,6 +37,9 @@ data class ReportStats(
     val topProducts: List<TopProduct>
 )
 
+/** Cifras del perfil del vendedor. */
+data class SellerStats(val products: Int, val unitsSold: Int, val revenue: Long)
+
 /** Calcula las estadísticas a partir de usuarios, discos y pedidos. Solo cuentan los pedidos pagados. */
 object StatsCalculator {
 
@@ -50,6 +53,15 @@ object StatsCalculator {
         add(Calendar.MONTH, -monthsAgo)
     }.timeInMillis
 
+    /** Discos publicados, unidades vendidas e ingresos de un vendedor, contando solo pedidos pagados. */
+    fun seller(sellerId: String, products: List<Product>, orders: List<Order>): SellerStats {
+        val items = orders.paid().flatMap { it.items }.filter { it.sellerId == sellerId }
+        return SellerStats(
+            products = products.count { it.sellerId == sellerId },
+            unitsSold = items.sumOf { it.quantity },
+            revenue = items.sumOf { it.price * it.quantity }
+        )
+    }
     private fun List<Order>.paid() = filter { it.paymentStatus == PaymentStatus.PAID }
 
     fun dashboard(users: List<User>, products: List<Product>, orders: List<Order>): DashboardStats {

@@ -21,7 +21,8 @@ data class User(
     val active: Boolean = true,
     val uid: String = "",
     val phone: String = "",
-    val deleted: Boolean = false
+    val deleted: Boolean = false,
+    val photoUrl: String = ""
 ) : Serializable
 
 

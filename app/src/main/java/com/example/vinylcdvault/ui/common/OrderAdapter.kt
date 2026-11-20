@@ -44,8 +44,7 @@ class OrderAdapter(
 
         holder.id.text = context.getString(R.string.order_number, order.id.takeLast(5).uppercase())
         // Si hay una solicitud de retracto, esa etiqueta tiene prioridad sobre el estado de envío
-        if (order.withdrawalStatus == WithdrawalStatus.REQUESTED) holder.status.setText(R.string.status_withdrawal)
-        else holder.status.setText(orderStatusRes(order.status))
+        holder.status.setText(orderLabelRes(order))
         holder.buyer.text = order.buyerName
         holder.products.text = shownItems.joinToString("\n") { "${it.title} (${it.format}) ×${it.quantity}" }
         holder.date.text = order.createdAt.toDateText()

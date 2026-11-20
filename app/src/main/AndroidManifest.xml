@@ -88,6 +88,8 @@
 
         <activity android:name=".ui.buyer.AddressesActivity" android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".ui.buyer.SellerPublicActivity" android:exported="false" />
     </application>
 
 </manifest>

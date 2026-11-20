@@ -57,7 +57,7 @@ class FirebaseAuthRepository(
 
     override suspend fun currentProfile(): User? {
         val uid = auth.currentUser?.uid ?: return null
-        val profile = users.document(uid).get().await().toObject(User::class.java)
+        val profile = users.document(uid).get().await().toObject(User::class.java)?.copy(uid = uid)
         if (profile == null || !profile.active || profile.deleted) {
             auth.signOut()
             return null
