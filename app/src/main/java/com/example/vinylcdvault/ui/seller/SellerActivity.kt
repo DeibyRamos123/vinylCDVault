@@ -1,6 +1,7 @@
 package com.example.vinylcdvault.ui.seller
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.vinylcdvault.R
@@ -17,6 +18,7 @@ class SellerActivity : AppCompatActivity() {
                 R.id.nav_seller_orders -> SellerOrdersFragment()
                 else -> SellerProfileFragment()
             }
+            findViewById<View>(R.id.loadingOverlay).visibility = View.VISIBLE
             supportFragmentManager.beginTransaction()
                 .replace(R.id.sellerContainer, fragment)
                 .commit()

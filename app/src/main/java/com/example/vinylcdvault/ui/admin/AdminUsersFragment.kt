@@ -17,6 +17,7 @@ import com.example.vinylcdvault.R
 import com.example.vinylcdvault.di.AppContainer
 import com.example.vinylcdvault.model.User
 import com.example.vinylcdvault.ui.common.UserAdapter
+import com.example.vinylcdvault.ui.common.reportLoading
 import com.example.vinylcdvault.ui.common.roleLabelRes
 import com.example.vinylcdvault.util.Resource
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -50,6 +51,7 @@ class AdminUsersFragment : Fragment(R.layout.fragment_admin_users) {
                 // Lista en tiempo real
                 launch {
                     viewModel.users.collect { state ->
+                        reportLoading(state)
                         when (state) {
                             is Resource.Success -> { allUsers = state.data; applyFilter() }
                             is Resource.Error -> toast(state.message)

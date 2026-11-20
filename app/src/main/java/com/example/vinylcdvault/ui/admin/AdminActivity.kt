@@ -1,6 +1,7 @@
 package com.example.vinylcdvault.ui.admin
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.vinylcdvault.R
@@ -18,6 +19,7 @@ class AdminActivity : AppCompatActivity() {
                 R.id.nav_admin_products -> AdminProductsFragment()
                 else -> AdminReportsFragment()
             }
+            findViewById<View>(R.id.loadingOverlay).visibility = View.VISIBLE
             supportFragmentManager.beginTransaction()
                 .replace(R.id.adminContainer, fragment)
                 .commit()

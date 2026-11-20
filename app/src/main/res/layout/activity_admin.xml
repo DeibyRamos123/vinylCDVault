@@ -7,12 +7,23 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/adminContainer"
         android:name="com.example.vinylcdvault.ui.admin.AdminDashboardFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
+        <include
+            android:id="@+id/loadingOverlay"
+            layout="@layout/view_loading"/>
+
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/adminBottomNav"

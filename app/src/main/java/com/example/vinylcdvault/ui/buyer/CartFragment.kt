@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.CartItem
 import com.example.vinylcdvault.ui.common.CartAdapter
+import com.example.vinylcdvault.ui.common.reportLoading
 import com.example.vinylcdvault.util.Pricing
 import com.example.vinylcdvault.util.Resource
 import com.example.vinylcdvault.util.toCop
@@ -51,6 +52,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
                 // Lista y totales en tiempo real
                 launch {
                     viewModel.items.collect { state ->
+                        reportLoading(state)
                         if (state is Resource.Success) {
                             currentItems = state.data
                             cartAdapter.submitList(state.data)

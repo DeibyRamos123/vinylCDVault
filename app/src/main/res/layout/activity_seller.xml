@@ -7,12 +7,22 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/sellerContainer"
-        android:name="com.example.vinylcdvault.ui.seller.SellerProductsFragment"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/sellerContainer"
+            android:name="com.example.vinylcdvault.ui.seller.SellerProductsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            android:id="@+id/loadingOverlay"
+            layout="@layout/view_loading" />
+
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/sellerBottomNav"

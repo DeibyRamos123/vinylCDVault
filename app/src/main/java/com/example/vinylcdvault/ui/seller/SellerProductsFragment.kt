@@ -17,6 +17,7 @@ import com.example.vinylcdvault.model.Product
 import com.example.vinylcdvault.ui.common.ProductViewModel
 import com.example.vinylcdvault.ui.common.ProductViewModelFactory
 import com.example.vinylcdvault.ui.common.SellerProductAdapter
+import com.example.vinylcdvault.ui.common.reportLoading
 import com.example.vinylcdvault.util.Resource
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
@@ -42,6 +43,7 @@ class SellerProductsFragment : Fragment(R.layout.fragment_seller_products) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.products.collect { state ->
+                        reportLoading(state)
                         when (state) {
                             // Solo los discos publicados por este vendedor
                             is Resource.Success -> productAdapter.submitList(state.data.filter { it.sellerId == myUid })

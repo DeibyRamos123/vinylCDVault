@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.PaymentStatus
+import com.example.vinylcdvault.ui.common.reportLoading
 import com.example.vinylcdvault.util.ReportExporter
 import com.example.vinylcdvault.util.Resource
 import com.example.vinylcdvault.util.toCompactCop
@@ -34,6 +35,7 @@ class AdminReportsFragment : Fragment(R.layout.fragment_admin_reports) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.report.collect { state ->
+                    reportLoading(state)
                     if (state is Resource.Success) show(view, state.data)
                 }
             }

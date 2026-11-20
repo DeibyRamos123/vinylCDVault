@@ -16,6 +16,7 @@ import com.example.vinylcdvault.model.Product
 import com.example.vinylcdvault.ui.common.ProductViewModel
 import com.example.vinylcdvault.ui.common.ProductViewModelFactory
 import com.example.vinylcdvault.ui.common.SellerProductAdapter
+import com.example.vinylcdvault.ui.common.reportLoading
 import com.example.vinylcdvault.ui.seller.ProductFormActivity
 import com.example.vinylcdvault.util.Resource
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -41,6 +42,7 @@ class AdminProductsFragment : Fragment(R.layout.fragment_admin_products) {
                 // Lista en tiempo real con todos los discos, sin filtrar por vendedor
                 launch {
                     viewModel.products.collect { state ->
+                        reportLoading(state)
                         when (state) {
                             is Resource.Success -> productAdapter.submitList(state.data)
                             is Resource.Error -> toast(state.message)

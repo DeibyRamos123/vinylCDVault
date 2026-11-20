@@ -145,10 +145,12 @@
     <string name="seller_stat_listings_value">24</string>
     <string name="seller_stat_sales_value">138</string>
     <string name="seller_stat_rating_value">4.8 ★</string>
-    <string name="seller_row_store">🏪  Datos de la tienda</string>
-    <string name="seller_row_shipping">🚚  Opciones de envío</string>
-    <string name="seller_row_payments">💳  Cuenta de pagos</string>
-    <string name="seller_row_help">❓  Ayuda para vendedores</string>
+    <!-- Perfil del vendedor (reemplazan a las anteriores, ahora sin emojis) -->
+    <string name="seller_row_store">Datos de la tienda</string>
+    <string name="seller_row_shipping">Opciones de envío</string>
+    <string name="seller_row_payments">Cuenta de pagos</string>
+    <string name="seller_row_help">Ayuda para vendedores</string>
+    <string name="seller_stat_revenue">Ingresos</string>
 
 
     <string name="admin_nav_dashboard">Panel</string>
@@ -263,7 +265,7 @@
     <string name="withdrawal_confirm">Solicitar retracto</string>
     <string name="withdrawal_sent">Solicitud de retracto enviada (simulado)</string>
     <string name="info_store_title">Datos de la tienda</string>
-    <string name="info_store_msg">VinylWorks Store\nventas@vinylworks.co\nBogotá, Colombia</string>
+    <string name="info_store_msg">%1$s\n%2$s</string>
     <string name="info_shipping_title">Opciones de envío</string>
     <string name="info_shipping_msg">Envío estándar (3 a 5 días) y express (1 a 2 días) a todo el país.</string>
     <string name="info_payments_title">Cuenta de pagos</string>
@@ -396,4 +398,29 @@
     <string name="checkout_saved_address">Elegir dirección guardada</string>
     <string name="checkout_no_saved">No tienes direcciones guardadas. Agrégalas desde tu perfil</string>
     <string name="checkout_pick_address">Elige una dirección</string>
+
+
+    <!-- Foto de perfil -->
+    <string name="photo_change">Cambiar foto de perfil</string>
+    <string name="photo_gallery">Elegir de la galería</string>
+    <string name="photo_camera">Tomar una foto</string>
+    <string name="photo_updated">Foto de perfil actualizada</string>
+
+
+    <!-- Perfil público del vendedor -->
+    <string name="sold_by">Vendido por</string>
+    <string name="seller_public_products">Productos</string>
+    <string name="seller_public_count">%1$d discos publicados</string>
+    <string name="seller_public_empty">Este vendedor aún no tiene discos publicados</string>
+    <string name="seller_not_found">No se encontró al vendedor</string>
+
+    <!-- Retracto desde el vendedor -->
+    <string name="status_withdrawal_accepted">Retracto aceptado</string>
+    <string name="status_withdrawal_rejected">Retracto rechazado</string>
+    <string name="withdrawal_seller_title">Solicitud de retracto</string>
+    <string name="withdrawal_seller_msg">%1$s solicitó el retracto del %2$s por %3$s. Si lo aceptas, el pedido queda con el reembolso pendiente y debes devolver el dinero desde tu panel de Wompi.</string>
+    <string name="withdrawal_accept">Aceptar</string>
+    <string name="withdrawal_reject">Rechazar</string>
+    <string name="withdrawal_accepted_ok">Retracto aceptado. Reembolso pendiente</string>
+    <string name="withdrawal_rejected_ok">Retracto rechazado</string>
 </resources>

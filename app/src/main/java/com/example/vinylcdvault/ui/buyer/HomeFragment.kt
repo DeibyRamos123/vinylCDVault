@@ -17,6 +17,7 @@ import com.example.vinylcdvault.ui.common.ProductAdapter
 import com.example.vinylcdvault.ui.common.ProductViewModel
 import com.example.vinylcdvault.ui.common.ProductViewModelFactory
 import com.example.vinylcdvault.ui.common.fillActionChips
+import com.example.vinylcdvault.ui.common.reportLoading
 import com.example.vinylcdvault.util.Resource
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.ChipGroup
@@ -48,6 +49,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.products.collect { state ->
+                    reportLoading(state)
                     if (state is Resource.Success) {
                         rv.adapter = ProductAdapter(state.data.take(4), R.layout.item_product) {
                             requireContext().openProductDetail(it)

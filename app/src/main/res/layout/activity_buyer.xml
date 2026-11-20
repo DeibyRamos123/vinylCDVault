@@ -7,15 +7,20 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <!--Los fragments son como los componentes en ract-->
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainer"
-        android:name="com.example.vinylcdvault.ui.buyer.HomeFragment"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
 
-    <!-- Se importa la barra de navegacion que tambien funciona como un componente de react-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainer"
+            android:name="com.example.vinylcdvault.ui.buyer.HomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include layout="@layout/view_loading" />
+    </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"

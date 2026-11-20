@@ -20,6 +20,7 @@ import com.example.vinylcdvault.ui.common.ProductAdapter
 import com.example.vinylcdvault.ui.common.ProductViewModel
 import com.example.vinylcdvault.ui.common.ProductViewModelFactory
 import com.example.vinylcdvault.ui.common.fillSingleChoice
+import com.example.vinylcdvault.ui.common.reportLoading
 import com.example.vinylcdvault.util.Resource
 import com.google.android.material.chip.ChipGroup
 import kotlinx.coroutines.flow.combine
@@ -66,6 +67,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 combine(productVm.products, filterVm.filter) { state, criteria -> state to criteria }
                     .collect { (state, criteria) ->
+                        reportLoading(state)
                         if (state is Resource.Success) {
                             val list = state.data.applyFilter(criteria)
                             rv.adapter = ProductAdapter(list, R.layout.item_product) {

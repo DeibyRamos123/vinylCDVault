@@ -13,6 +13,7 @@ import com.example.vinylcdvault.R
 import com.example.vinylcdvault.ui.common.ProfileViewModel
 import com.example.vinylcdvault.ui.common.ProfileViewModelFactory
 import com.example.vinylcdvault.ui.common.logoutToLogin
+import com.example.vinylcdvault.ui.common.reportLoading
 import kotlinx.coroutines.launch
 
 /** Perfil del comprador: datos de la cuenta y accesos a pedidos, direcciones, favoritos y retracto. */
