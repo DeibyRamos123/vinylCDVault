@@ -48,7 +48,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.products.collect { state ->
+                viewModel.visible.collect { state ->
                     reportLoading(state)
                     if (state is Resource.Success) {
                         rv.adapter = ProductAdapter(state.data.take(4), R.layout.item_product) {

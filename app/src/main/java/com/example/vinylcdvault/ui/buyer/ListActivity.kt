@@ -73,7 +73,7 @@ class ListActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                combine(productVm.products, favoriteVm.ids) { state, ids ->
+                combine(productVm.visible, favoriteVm.ids) { state, ids ->
                     if (state is Resource.Success) state.data.filter { it.id in ids } else null
                 }.collect { list ->
                     if (list != null) {

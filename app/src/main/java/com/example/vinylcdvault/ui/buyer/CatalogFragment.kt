@@ -65,7 +65,7 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         // Cada vez que llegan discos nuevos o cambia el filtro, se vuelve a calcular la lista
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                combine(productVm.products, filterVm.filter) { state, criteria -> state to criteria }
+                combine(productVm.visible, filterVm.filter) { state, criteria -> state to criteria }
                     .collect { (state, criteria) ->
                         reportLoading(state)
                         if (state is Resource.Success) {

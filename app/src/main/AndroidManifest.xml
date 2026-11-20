@@ -85,11 +85,17 @@
             android:exported="false"
             android:theme="@style/Theme.VinylCDVault"
             android:windowSoftInputMode="adjustResize" />
-
-        <activity android:name=".ui.buyer.AddressesActivity" android:exported="false"
+        <activity
+            android:name=".ui.buyer.AddressesActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
-        <activity android:name=".ui.buyer.SellerPublicActivity" android:exported="false" />
+        <activity
+            android:name=".ui.buyer.SellerPublicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminProductDetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

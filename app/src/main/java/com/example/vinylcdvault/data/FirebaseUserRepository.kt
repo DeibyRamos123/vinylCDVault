@@ -61,14 +61,19 @@ class FirebaseUserRepository(private val db: FirebaseFirestore) : UserRepository
     }
 
     override suspend fun updateUser(uid: String, name: String, role: String, active: Boolean) {
-        users.document(uid)
-            .update(mapOf("name" to name, "role" to role, "active" to active))
-            .await()
+        val ref = users.document(uid)
+        val wasActive = ref.get().await().getBoolean("active") ?: true
+        ref.update(mapOf("name" to name, "role" to role, "active" to active)).await()
+        // Si cambió el estado de la cuenta, sus discos se ocultan o se vuelven a mostrar en el catálogo
+        if (wasActive != active) setProductsHidden(uid, hidden = !active)
     }
 
     override suspend fun deleteUser(uid: String) {
         users.document(uid).update(mapOf("deleted" to true, "active" to false)).await()
+        // Un usuario eliminado no debe dejar discos visibles
+        setProductsHidden(uid, hidden = true)
     }
+
 
     override suspend fun getUser(uid: String): User? =
         users.document(uid).get().await().toObject(User::class.java)
@@ -79,6 +84,16 @@ class FirebaseUserRepository(private val db: FirebaseFirestore) : UserRepository
         // La foto se sube a Cloudinary y solo se guarda su dirección en Firestore
         val url = CloudinaryUploader.upload(imageBytes)
         users.document(uid).update("photoUrl", url).await()
+    }
+
+    // Oculta o muestra todos los discos de un vendedor (Firestore permite 500 escrituras por batch)
+    private suspend fun setProductsHidden(sellerId: String, hidden: Boolean) {
+        val docs = db.collection("products").whereEqualTo("sellerId", sellerId).get().await().documents
+        docs.chunked(400).forEach { chunk ->
+            val batch = db.batch()
+            chunk.forEach { batch.update(it.reference, "hidden", hidden) }
+            batch.commit().await()
+        }
     }
 
     private companion object {

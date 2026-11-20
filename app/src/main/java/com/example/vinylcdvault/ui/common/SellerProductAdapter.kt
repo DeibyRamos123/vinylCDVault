@@ -16,7 +16,8 @@ import com.example.vinylcdvault.util.toCop
 /** Lista de discos con portada y botones de editar y eliminar (vendedor y administrador). */
 class SellerProductAdapter(
     private val onEdit: (Product) -> Unit,
-    private val onDelete: (Product) -> Unit
+    private val onDelete: (Product) -> Unit,
+    private val onOpen: ((Product) -> Unit)? = null
 ) : ListAdapter<Product, SellerProductAdapter.VH>(ProductDiff) {
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
@@ -36,7 +37,11 @@ class SellerProductAdapter(
         val p = getItem(position)
         holder.title.text = p.title
         holder.artist.text = p.artist
-        holder.format.text = p.format
+        // Los discos ocultos por moderación se marcan para que el administrador los distinga
+        holder.format.text = if (p.hidden)
+            "${p.format} · ${holder.itemView.context.getString(R.string.product_hidden_tag)}"
+        else p.format
+
         holder.price.text = p.price.toCop()
 
         // Portada con Coil; si el disco no tiene foto, se queda el fondo gris
@@ -52,6 +57,9 @@ class SellerProductAdapter(
 
         holder.edit.setOnClickListener { onEdit(p) }
         holder.delete.setOnClickListener { onDelete(p) }
+        
+        // Solo el administrador abre el detalle tocando la fila; en la lista del vendedor no hace nada
+        onOpen?.let { open -> holder.itemView.setOnClickListener { open(p) } }
     }
 }
 

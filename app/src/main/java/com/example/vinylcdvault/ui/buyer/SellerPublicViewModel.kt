@@ -40,7 +40,7 @@ class SellerPublicViewModel(
     /** Discos publicados por ese vendedor, en tiempo real. */
     fun productsOf(sellerId: String): StateFlow<Resource<List<Product>>> =
         products.observeProducts()
-            .map { list -> list.filter { it.sellerId == sellerId } }
+            .map { list -> list.filter { it.sellerId == sellerId && !it.hidden } }
             .asResource(viewModelScope)
 }
 

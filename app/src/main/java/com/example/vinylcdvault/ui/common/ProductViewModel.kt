@@ -26,6 +26,13 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
         .catch { emit(Resource.Error(it.toFriendlyMessage())) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), Resource.Loading)
 
+    /** Solo los discos visibles para los compradores: sin los ocultos por moderación. */
+    val visible: StateFlow<Resource<List<Product>>> = products
+        .map<Resource<List<Product>>, Resource<List<Product>>> { state ->
+            if (state is Resource.Success) Resource.Success(state.data.filter { !it.hidden }) else state
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), Resource.Loading)
+
     // Resultado de la última operación: éxito con el id del mensaje, o error con texto
     private val _opState = MutableStateFlow<Resource<Int>?>(null)
     val opState: StateFlow<Resource<Int>?> = _opState
