@@ -427,4 +427,25 @@
     <string name="withdrawal_reject">Rechazar</string>
     <string name="withdrawal_accepted_ok">Retracto aceptado. Reembolso pendiente</string>
     <string name="withdrawal_rejected_ok">Retracto rechazado</string>
+
+
+    <string name="admin_products_search_hint">Buscar por título o artista</string>
+    <string name="admin_products_showing">Mostrando %1$d de %2$d discos</string>
+    <string name="product_hidden_tag">Oculto</string>
+
+    <string name="moderation_published_by">Publicado por</string>
+    <string name="moderation_published_on">Publicado el %1$s</string>
+    <string name="moderation_suspend_seller">Suspender vendedor</string>
+    <string name="moderation_reactivate_seller">Reactivar vendedor</string>
+    <string name="moderation_suspend_msg">%1$s no podrá iniciar sesión y todos sus discos se ocultarán del catálogo. Podrás reactivarlo después.</string>
+    <string name="moderation_reactivate_msg">Se reactivará la cuenta de %1$s y sus discos volverán a mostrarse en el catálogo.</string>
+    <string name="moderation_suspend_confirm">Suspender</string>
+    <string name="moderation_reactivate_confirm">Reactivar</string>
+    <string name="moderation_seller_suspended">Vendedor suspendido</string>
+    <string name="moderation_seller_reactivated">Vendedor reactivado</string>
+    <string name="moderation_delete_product">Eliminar disco</string>
+    <string name="moderation_delete_msg">Se eliminará el disco de la tienda. Esta acción no se puede deshacer.</string>
+    <string name="moderation_admin_note">Esta cuenta es de un administrador y no se puede suspender desde aquí</string>
+    <string name="moderation_no_seller">Este disco no tiene un vendedor asociado (se publicó antes de registrar la autoría)</string>
+    <string name="moderation_seller_missing">Vendedor no disponible (cuenta eliminada)</string>
 </resources>

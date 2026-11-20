@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.User
+import android.widget.ImageView
 
 /**
  * Muestra la lista de usuarios. Usa DiffUtil para animar solo lo que cambió
@@ -21,6 +22,7 @@ class UserAdapter(
 ) : ListAdapter<User, UserAdapter.VH>(UserDiff) {
 
     class VH(view: View) : RecyclerView.ViewHolder(view) {
+        val avatar: ImageView = view.findViewById(R.id.ivUserAvatar)
         val name: TextView = view.findViewById(R.id.tvUserName)
         val email: TextView = view.findViewById(R.id.tvUserEmail)
         val role: TextView = view.findViewById(R.id.tvUserRole)
@@ -35,6 +37,7 @@ class UserAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val u = getItem(position)
         val context = holder.itemView.context
+        holder.avatar.showAvatar(u.photoUrl)   // foto en círculo, o el ícono si no tiene
         holder.name.text = u.name
         holder.email.text = u.email
         holder.role.setText(roleLabelRes(u.role))
