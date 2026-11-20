@@ -16,6 +16,11 @@ object PaymentStatus {
     const val FAILED = "failed"
 }
 
+object WithdrawalStatus {
+    const val NONE = ""
+    const val REQUESTED = "requested"
+}
+
 /** Pedido guardado en Firestore (colección "orders"). */
 data class Order(
     val id: String = "",
@@ -34,5 +39,8 @@ data class Order(
     val transactionId: String = "",      // id de la transacción que devuelve Wompi
     val status: String = OrderStatus.PENDING,
     val sellerIds: List<String> = emptyList(),   // permite al vendedor encontrar sus pedidos
-    val createdAt: Long = 0
+    val createdAt: Long = 0,
+    val deliveredAt: Long = 0,                          // cuándo el vendedor marcó la entrega
+    val withdrawalStatus: String = WithdrawalStatus.NONE,
+    val withdrawalAt: Long = 0                          // cuándo se solicitó el retracto
 ) : Serializable

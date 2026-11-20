@@ -2,7 +2,9 @@ package com.example.vinylcdvault.data
 
 import com.example.vinylcdvault.model.CartItem
 import com.example.vinylcdvault.model.Order
+import com.example.vinylcdvault.model.OrderStatus
 import com.example.vinylcdvault.model.PaymentStatus
+import com.example.vinylcdvault.model.WithdrawalStatus
 import com.example.vinylcdvault.repository.OrderRepository
 import com.example.vinylcdvault.util.Pricing
 import com.google.firebase.auth.FirebaseAuth
@@ -59,7 +61,19 @@ class FirebaseOrderRepository(
     override fun observeSellerOrders(): Flow<List<Order>> = observe { uid -> orders.whereArrayContains("sellerIds", uid) }
 
     override suspend fun updateStatus(orderId: String, status: String) {
-        orders.document(orderId).update("status", status).await()
+        val data = mutableMapOf<String, Any>("status" to status)
+        // Al marcar la entrega se guarda la fecha: desde ahí corre el plazo del retracto
+        if (status == OrderStatus.DELIVERED) data["deliveredAt"] = System.currentTimeMillis()
+        orders.document(orderId).update(data).await()
+    }
+
+    override suspend fun requestWithdrawal(orderId: String) {
+        orders.document(orderId).update(
+            mapOf(
+                "withdrawalStatus" to WithdrawalStatus.REQUESTED,
+                "withdrawalAt" to System.currentTimeMillis()
+            )
+        ).await()
     }
 
     override fun observeAllOrders(): Flow<List<Order>> = observe { _ -> orders }

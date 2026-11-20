@@ -63,6 +63,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSavedAddress"
+                style="@style/App.ButtonOutlined"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/checkout_saved_address" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLocation"
                 style="@style/App.ButtonOutlined"
                 android:layout_width="match_parent"

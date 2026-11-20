@@ -25,6 +25,8 @@ import com.example.vinylcdvault.util.toCop
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
+import com.example.vinylcdvault.model.Address
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * Pantalla de pago: captura la ubicación, exige la huella, abre el checkout de Wompi y,
@@ -47,6 +49,10 @@ class CheckoutActivity : AppCompatActivity() {
     private lateinit var btnLocation: MaterialButton
     private lateinit var tvLocation: TextView
     private lateinit var etAddress: TextInputEditText
+
+    private val addressVm: AddressViewModel by viewModels { AddressViewModelFactory() }
+    private var savedAddresses: List<Address> = emptyList()
+    private var addressPrefilled = false   // la dirección predeterminada se propone una sola vez
 
     // Permisos de ubicación: con que se conceda uno (exacta o aproximada) se puede continuar
     private val permissionLauncher = registerForActivityResult(
@@ -85,6 +91,8 @@ class CheckoutActivity : AppCompatActivity() {
         findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
         btnLocation.setOnClickListener { requestLocation() }
 
+        findViewById<View>(R.id.btnSavedAddress).setOnClickListener { pickSavedAddress() }
+
         // La huella es obligatoria antes de pagar
         findViewById<View>(R.id.btnPayBiometric).setOnClickListener {
             BiometricHelper.authenticate(this) {
@@ -119,6 +127,18 @@ class CheckoutActivity : AppCompatActivity() {
                         if (state is Resource.Success) {
                             cartItems = state.data
                             tvTotal.text = Pricing.total(state.data).toCop()
+                        }
+                    }
+                }
+                launch {
+                    addressVm.addresses.collect { state ->
+                        if (state is Resource.Success) {
+                            savedAddresses = state.data
+                            val primary = state.data.firstOrNull { it.primary }
+                            if (!addressPrefilled && primary != null && etAddress.text.isNullOrBlank()) {
+                                applyAddress(primary)
+                                addressPrefilled = true
+                            }
                         }
                     }
                 }
@@ -179,6 +199,28 @@ class CheckoutActivity : AppCompatActivity() {
                 btnLocation.isEnabled = true
             }
         }
+    }
+
+    private fun pickSavedAddress() {
+        if (savedAddresses.isEmpty()) {
+            toast(R.string.checkout_no_saved)
+            return
+        }
+        val labels = savedAddresses.map { "${it.label}: ${it.address}" }.toTypedArray()
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.checkout_pick_address)
+            .setItems(labels) { _, which -> applyAddress(savedAddresses[which]) }
+            .show()
+    }
+
+    // Copia la dirección elegida al formulario, con sus coordenadas si las tiene
+    private fun applyAddress(a: Address) {
+        etAddress.setText(a.address)
+        latitude = a.latitude
+        longitude = a.longitude
+        tvLocation.text = if (latitude != 0.0 || longitude != 0.0)
+            getString(R.string.checkout_location_ok, latitude, longitude)
+        else getString(R.string.checkout_location_none)
     }
 
     private fun toast(messageRes: Int) = Toast.makeText(this, messageRes, Toast.LENGTH_LONG).show()

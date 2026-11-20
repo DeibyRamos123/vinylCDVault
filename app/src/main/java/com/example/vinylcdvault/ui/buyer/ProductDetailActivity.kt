@@ -1,26 +1,32 @@
 package com.example.vinylcdvault.ui.buyer
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import coil.load
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.Product
+import com.example.vinylcdvault.ui.common.FavoriteViewModel
+import com.example.vinylcdvault.ui.common.FavoriteViewModelFactory
 import com.example.vinylcdvault.util.Resource
 import com.example.vinylcdvault.util.toCop
 import kotlinx.coroutines.launch
 
-/** Detalle de un disco: muestra sus datos y permite agregarlo al carrito. */
+/** Detalle de un disco: muestra sus datos, permite agregarlo al carrito y marcarlo como favorito. */
 class ProductDetailActivity : AppCompatActivity() {
 
-    private val viewModel: CartViewModel by viewModels { CartViewModelFactory() }
+    private val cartViewModel: CartViewModel by viewModels { CartViewModelFactory() }
+    private val favoriteViewModel: FavoriteViewModel by viewModels { FavoriteViewModelFactory() }
 
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,26 +46,44 @@ class ProductDetailActivity : AppCompatActivity() {
             error(R.drawable.bg_cover)
         }
 
+        val btnFavorite = findViewById<ImageButton>(R.id.btnFavorite)
         findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
-        findViewById<View>(R.id.btnAddToCart).setOnClickListener { viewModel.add(p) }
+        findViewById<View>(R.id.btnAddToCart).setOnClickListener { cartViewModel.add(p) }
+        btnFavorite.setOnClickListener {
+            val adding = p.id !in favoriteViewModel.ids.value
+            favoriteViewModel.toggle(p.id)
+            Toast.makeText(this, if (adding) R.string.favorite_added else R.string.favorite_removed, Toast.LENGTH_SHORT).show()
+        }
 
-        // Avisa si se agregó al carrito o si hubo un error (por ejemplo, sin sesión)
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.opState.collect { state ->
-                    when (state) {
-                        is Resource.Success -> {
-                            Toast.makeText(this@ProductDetailActivity, state.data, Toast.LENGTH_SHORT).show()
-                            viewModel.resetOp()
+                // El corazón se pinta según si el disco está en favoritos
+                launch { favoriteViewModel.ids.collect { renderFavorite(btnFavorite, p.id in it) } }
+                // Aviso de agregado al carrito o de error
+                launch {
+                    cartViewModel.opState.collect { state ->
+                        when (state) {
+                            is Resource.Success -> {
+                                Toast.makeText(this@ProductDetailActivity, state.data, Toast.LENGTH_SHORT).show()
+                                cartViewModel.resetOp()
+                            }
+                            is Resource.Error -> {
+                                Toast.makeText(this@ProductDetailActivity, state.message, Toast.LENGTH_LONG).show()
+                                cartViewModel.resetOp()
+                            }
+                            else -> Unit
                         }
-                        is Resource.Error -> {
-                            Toast.makeText(this@ProductDetailActivity, state.message, Toast.LENGTH_LONG).show()
-                            viewModel.resetOp()
-                        }
-                        else -> Unit
                     }
                 }
             }
         }
+    }
+
+    // Corazón relleno y rojo si es favorito; de línea y azul marino si no
+    private fun renderFavorite(button: ImageButton, isFavorite: Boolean) {
+        button.setImageResource(if (isFavorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border)
+        button.imageTintList = ColorStateList.valueOf(
+            ContextCompat.getColor(this, if (isFavorite) R.color.accent else R.color.primary)
+        )
     }
 }

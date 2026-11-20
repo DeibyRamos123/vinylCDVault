@@ -1,12 +1,16 @@
 package com.example.vinylcdvault.di
 
+import com.example.vinylcdvault.data.FirebaseAddressRepository
 import com.example.vinylcdvault.data.FirebaseAuthRepository
 import com.example.vinylcdvault.data.FirebaseCartRepository
+import com.example.vinylcdvault.data.FirebaseFavoriteRepository
 import com.example.vinylcdvault.data.FirebaseOrderRepository
 import com.example.vinylcdvault.data.FirebaseProductRepository
 import com.example.vinylcdvault.data.FirebaseUserRepository
+import com.example.vinylcdvault.repository.AddressRepository
 import com.example.vinylcdvault.repository.AuthRepository
 import com.example.vinylcdvault.repository.CartRepository
+import com.example.vinylcdvault.repository.FavoriteRepository
 import com.example.vinylcdvault.repository.OrderRepository
 import com.example.vinylcdvault.repository.ProductRepository
 import com.example.vinylcdvault.repository.UserRepository
@@ -30,4 +34,6 @@ object AppContainer {
     val cartRepository: CartRepository by lazy { FirebaseCartRepository(firestore, auth) }
     val orderRepository: OrderRepository by lazy { FirebaseOrderRepository(firestore, auth) }
 
+    val favoriteRepository: FavoriteRepository by lazy { FirebaseFavoriteRepository(firestore, auth) }
+    val addressRepository: AddressRepository by lazy { FirebaseAddressRepository(firestore, auth) }
 }

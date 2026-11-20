@@ -83,10 +83,10 @@
     <string name="profile_title">Mi perfil</string>
     <string name="sample_name">Deiby Ramos</string>
     <string name="sample_email">deiby@correo.com</string>
-    <string name="profile_orders">📦  Mis pedidos</string>
-    <string name="profile_addresses">📍  Mis direcciones</string>
-    <string name="profile_favorites">❤️  Favoritos</string>
-    <string name="profile_withdrawal">↩️  Retracto / cancelar compra</string>
+    <string name="profile_orders">Mis pedidos</string>
+    <string name="profile_addresses">Mis direcciones</string>
+    <string name="profile_favorites">Favoritos</string>
+    <string name="profile_withdrawal">Retracto / cancelar compra</string>
     <string name="profile_logout">Cerrar sesión</string>
 
 
@@ -366,4 +366,34 @@
     <string name="reports_empty">Aún no hay ventas registradas</string>
     <string name="reports_top_line">%1$d. %2$s · %3$d vendidos</string>
     <string name="reports_nothing_to_export">No hay ventas para exportar</string>
+
+    <string name="withdrawal_list_title">Retracto / cancelar compra</string>
+    <string name="status_withdrawal">Retracto solicitado</string>
+    <string name="orders_empty">Aún no tienes pedidos</string>
+    <string name="withdrawal_msg_cancel">Tu pedido todavía no ha sido entregado, así que puedes cancelarlo. ¿Deseas solicitar la cancelación de la compra?</string>
+    <string name="withdrawal_msg_delivered">Según la Ley 1480 de 2011 puedes retractarte dentro de los 5 días hábiles siguientes a la entrega. Tu plazo vence el %1$s. ¿Deseas solicitar el retracto?</string>
+    <string name="withdrawal_requested_ok">Solicitud enviada. El vendedor gestionará el reembolso</string>
+    <string name="withdrawal_already">Este pedido ya tiene una solicitud de retracto</string>
+    <string name="withdrawal_expired">El plazo de 5 días hábiles desde la entrega ya venció</string>
+
+    <string name="favorite_toggle">Marcar como favorito</string>
+    <string name="favorite_added">Agregado a favoritos</string>
+    <string name="favorite_removed">Quitado de favoritos</string>
+    <string name="favorites_empty">Aún no tienes favoritos. Toca el corazón en el detalle de un disco</string>
+
+    <string name="addresses_title">Mis direcciones</string>
+    <string name="addresses_empty">Aún no tienes direcciones guardadas</string>
+    <string name="address_add">Agregar dirección</string>
+    <string name="address_edit">Editar dirección</string>
+    <string name="address_label_hint">Nombre (Casa, Trabajo…) *</string>
+    <string name="address_text_hint">Dirección *</string>
+    <string name="address_save">Guardar</string>
+    <string name="address_primary">Predeterminada</string>
+    <string name="address_make_primary">Predeterminar</string>
+    <string name="address_saved">Dirección guardada</string>
+    <string name="address_deleted">Dirección eliminada</string>
+    <string name="address_delete_message">¿Eliminar esta dirección?</string>
+    <string name="checkout_saved_address">Elegir dirección guardada</string>
+    <string name="checkout_no_saved">No tienes direcciones guardadas. Agrégalas desde tu perfil</string>
+    <string name="checkout_pick_address">Elige una dirección</string>
 </resources>

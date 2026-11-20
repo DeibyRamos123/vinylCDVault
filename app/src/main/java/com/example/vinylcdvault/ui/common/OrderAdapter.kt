@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinylcdvault.R
 import com.example.vinylcdvault.model.Order
+import com.example.vinylcdvault.model.WithdrawalStatus
 import com.example.vinylcdvault.util.toCop
 import com.example.vinylcdvault.util.toDateText
 
@@ -42,7 +43,9 @@ class OrderAdapter(
         val shownTotal = if (sellerId != null) shownItems.sumOf { it.price * it.quantity } else order.total
 
         holder.id.text = context.getString(R.string.order_number, order.id.takeLast(5).uppercase())
-        holder.status.setText(orderStatusRes(order.status))
+        // Si hay una solicitud de retracto, esa etiqueta tiene prioridad sobre el estado de envío
+        if (order.withdrawalStatus == WithdrawalStatus.REQUESTED) holder.status.setText(R.string.status_withdrawal)
+        else holder.status.setText(orderStatusRes(order.status))
         holder.buyer.text = order.buyerName
         holder.products.text = shownItems.joinToString("\n") { "${it.title} (${it.format}) ×${it.quantity}" }
         holder.date.text = order.createdAt.toDateText()

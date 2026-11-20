@@ -18,15 +18,17 @@
             android:layout_height="wrap_content"
             android:text="@string/profile_title" />
 
-        <TextView
+        <ImageView
             android:layout_width="@dimen/avatar_size"
             android:layout_height="@dimen/avatar_size"
             android:layout_marginTop="@dimen/spacing_medium"
             android:background="@drawable/bg_logo_circle"
-            android:gravity="center"
-            android:text="👤"
-            android:textSize="40sp" />
+            android:contentDescription="@string/profile_title"
+            android:padding="24dp"
+            android:src="@drawable/ic_person"
+            app:tint="@color/white" />
 
+        
         <TextView
             style="@style/App.Text.Subtitle"
             android:id="@+id/tvProfileName"
@@ -56,13 +58,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView android:id="@+id/rowOrders" style="@style/App.ProfileRow"  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_orders" />
+                <TextView android:id="@+id/rowOrders" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_receipt" android:text="@string/profile_orders" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView android:id="@+id/rowAddresses" style="@style/App.ProfileRow"  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_addresses" />
+                <TextView android:id="@+id/rowAddresses" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_location" android:text="@string/profile_addresses" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView android:id="@+id/rowFavorites" style="@style/App.ProfileRow"  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_favorites" />
+                <TextView android:id="@+id/rowFavorites" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_favorite_border" android:text="@string/profile_favorites" />
                 <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" />
-                <TextView android:id="@+id/rowWithdrawal" style="@style/App.ProfileRow"  android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_withdrawal" />
+                <TextView android:id="@+id/rowWithdrawal" style="@style/App.ProfileRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableStart="@drawable/ic_undo" android:text="@string/profile_withdrawal" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

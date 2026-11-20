@@ -45,8 +45,11 @@
     <style name="App.ProfileRow">
         <item name="android:padding">@dimen/spacing_medium</item>
         <item name="android:textSize">@dimen/text_body</item>
-        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:textColor">@color/primary_dark</item>
         <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/spacing_medium</item>
+        <item name="android:drawableTint">@color/primary</item>
     </style>
 
     <style name="App.Button" parent="Widget.Material3.Button">
@@ -70,4 +73,5 @@
         <item name="boxCornerRadiusBottomStart">@dimen/corner_radius</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius</item>
     </style>
+
 </resources>

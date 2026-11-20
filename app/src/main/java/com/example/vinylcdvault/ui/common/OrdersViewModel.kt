@@ -35,6 +35,18 @@ class OrdersViewModel(private val repository: OrderRepository) : ViewModel() {
         }
     }
 
+    /** Solicita el retracto o la cancelación de un pedido. */
+    fun requestWithdrawal(orderId: String) {
+        viewModelScope.launch {
+            _opState.value = try {
+                repository.requestWithdrawal(orderId)
+                Resource.Success(R.string.withdrawal_requested_ok)
+            } catch (e: Exception) {
+                Resource.Error(e.toFriendlyMessage())
+            }
+        }
+    }
+
     fun resetOp() { _opState.value = null }
 }
 

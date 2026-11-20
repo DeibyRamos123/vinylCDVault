@@ -12,6 +12,8 @@ interface OrderRepository {
         paymentReference: String, transactionId: String
     ): String
 
+    suspend fun requestWithdrawal(orderId: String)
+
     /** Pedidos del comprador con sesión abierta. */
     fun observeMyOrders(): Flow<List<Order>>
 
@@ -23,4 +25,5 @@ interface OrderRepository {
 
     /** Todos los pedidos de la tienda (vista del administrador). */
     fun observeAllOrders(): Flow<List<Order>>
+
 }
