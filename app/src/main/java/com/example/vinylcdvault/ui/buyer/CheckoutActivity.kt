@@ -181,7 +181,7 @@ class CheckoutActivity : AppCompatActivity() {
             btnLocation.isEnabled = false
             tvLocation.setText(R.string.checkout_location_loading)
             try {
-                val location = LocationHelper.currentLocation(this@CheckoutActivity)
+                val location = LocationHelper.currentLocation(this@CheckoutActivity)   // <-- ver nota abajo
                 if (location == null) {
                     tvLocation.setText(R.string.checkout_location_none)
                     toast(R.string.location_unavailable)
@@ -191,6 +191,7 @@ class CheckoutActivity : AppCompatActivity() {
                     tvLocation.text = getString(R.string.checkout_location_ok, latitude, longitude)
                     LocationHelper.addressFor(this@CheckoutActivity, latitude, longitude)
                         ?.let { etAddress.setText(it) }
+                        ?: toast(R.string.address_lookup_failed)
                 }
             } catch (e: Exception) {
                 tvLocation.setText(R.string.checkout_location_none)

@@ -302,7 +302,7 @@
     <string name="checkout_location_loading">Obteniendo ubicación…</string>
     <string name="checkout_location_ok">Ubicación capturada (%1$.5f, %2$.5f)</string>
     <string name="location_permission_denied">Sin permiso de ubicación. Escribe la dirección a mano</string>
-    <string name="location_unavailable">No se pudo obtener la ubicación. Activa el GPS e intenta de nuevo</string>
+    <string name="location_unavailable">No se pudo obtener la ubicación. Activa la ubicación del teléfono, permite la ubicación precisa e intenta de nuevo</string>
 
     <string name="payment_title">Pago seguro con Wompi</string>
     <string name="payment_verifying">Verificando el pago…</string>
@@ -448,4 +448,6 @@
     <string name="moderation_admin_note">Esta cuenta es de un administrador y no se puede suspender desde aquí</string>
     <string name="moderation_no_seller">Este disco no tiene un vendedor asociado (se publicó antes de registrar la autoría)</string>
     <string name="moderation_seller_missing">Vendedor no disponible (cuenta eliminada)</string>
+
+    <string name="address_lookup_failed">Capturamos tu ubicación, pero no pudimos obtener la dirección escrita. Escríbela a mano</string>
 </resources>

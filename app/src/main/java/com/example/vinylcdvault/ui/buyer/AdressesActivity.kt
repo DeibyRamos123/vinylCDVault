@@ -178,7 +178,9 @@ class AddressesActivity : AppCompatActivity() {
                     dialogLat = location.latitude
                     dialogLon = location.longitude
                     label.text = getString(R.string.checkout_location_ok, dialogLat, dialogLon)
-                    LocationHelper.addressFor(this@AddressesActivity, dialogLat, dialogLon)?.let { field.setText(it) }
+                    LocationHelper.addressFor(this@AddressesActivity, dialogLat, dialogLon)
+                        ?.let { field.setText(it) }
+                        ?: toast(R.string.address_lookup_failed)
                 }
             } catch (e: Exception) {
                 label.setText(R.string.checkout_location_none)
